@@ -1,0 +1,29 @@
+<idea-plugin>
+    <id>cn.tybblog.fish</id>
+    <name>touch-fish</name>
+    <vendor url="http://www.tybblog.cn">雷野</vendor>
+
+    <description>
+        上班摸鱼看书神器
+        设置界面在 File | Settings | Other Settings | Fish Config
+    </description>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+
+        <projectConfigurable groupId="Other Settings" displayName="Fish Config" id="thief.id"
+                             instance="cn.tybblog.touchfish.Setting"/>
+        <applicationService
+                serviceImplementation="cn.tybblog.touchfish.PersistentState"/>
+
+        <editorFactoryListener implementation="cn.tybblog.touchfish.editorKeyListener"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>

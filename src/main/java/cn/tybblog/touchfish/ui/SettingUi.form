@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="cn.tybblog.touchfish.ui.SettingUi">
+  <grid id="27dc6" binding="mainPanel" layout-manager="FormLayout">
+    <rowspec value="top:15dlu:noGrow"/>
+    <rowspec value="top:min(d;25px):grow"/>
+    <rowspec value="center:min(d;25px):noGrow"/>
+    <rowspec value="center:min(d;25px):noGrow"/>
+    <rowspec value="center:d:noGrow"/>
+    <colspec value="fill:58px:noGrow"/>
+    <colspec value="left:34dlu:noGrow"/>
+    <colspec value="fill:63px:noGrow"/>
+    <colspec value="fill:69px:noGrow"/>
+    <colspec value="fill:66px:noGrow"/>
+    <colspec value="fill:94px:noGrow"/>
+    <colspec value="fill:198px:noGrow"/>
+    <constraints>
+      <xy x="33" y="26" width="616" height="267"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="a5dda" class="javax.swing.JButton" binding="searchBtn">
+        <constraints>
+          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <text value="新增"/>
+        </properties>
+      </component>
+      <component id="fb1e4" class="cn.tybblog.touchfish.ui.table.JCTable" binding="bookTable">
+        <constraints>
+          <grid row="1" column="0" row-span="4" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="284f2" class="javax.swing.JButton" binding="delButton">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text value="删除"/>
+        </properties>
+      </component>
+      <component id="19f5c" class="cn.tybblog.touchfish.ui.table.JCTable" binding="keyMap" custom-create="true">
+        <constraints>
+          <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <autoCreateRowSorter value="false"/>
+          <autoResizeMode value="2"/>
+        </properties>
+      </component>
+      <component id="44d7" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="热键"/>
+        </properties>
+      </component>
+      <component id="542" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="0"/>
+          <text value="书架"/>
+        </properties>
+      </component>
+      <component id="12e3d" class="javax.swing.JButton" binding="selectBtn">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text value="选中"/>
+        </properties>
+      </component>
+      <component id="5b619" class="javax.swing.JButton" binding="refBtn">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text value="刷新"/>
+        </properties>
+      </component>
+      <component id="c676f" class="javax.swing.JLabel" binding="bookReading">
+        <constraints>
+          <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value=""/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
