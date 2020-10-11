@@ -163,13 +163,13 @@ public class editorKeyListener implements EditorFactoryListener {
     }
 
     private boolean nextChapters(StatusBar statusBar){
-        if (book.getIndex() >= book.getChapters().size()) {
+        if (book.getIndex()+1 >= book.getChapters().size()) {
             try {
                 loadChapters();
             } catch (Exception e) {
                 statusBar.setInfo("网络连接失败...");
             }
-            if (book.getIndex() > book.getChapters().size()) {
+            if (book.getIndex()+1 >= book.getChapters().size()) {
                 statusBar.setInfo("到底了！");
                 return true;
             }
