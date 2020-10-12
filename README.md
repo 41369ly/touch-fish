@@ -1,8 +1,9 @@
 创意源自VS Code插件版的小说阅读器（摸鱼神器Thief-Book），[链接地址](https://github.com/cteams/Thief-Book "链接地址")
 之后在github中看到https://github.com/yisier 小哥的版本
 因位置过于明显于是比较闲的我自制了一款难以发现的版本
+问题反馈群[加入群聊](https://jq.qq.com/?_wv=1027&k=coBQ4wnT "qq群链接")
 ## touch-fish
-##### idea插件 摸鱼神器 在线阅读无需下载 位置隐蔽难以发现
+#### idea插件 摸鱼神器 在线阅读无需下载 位置隐蔽难以发现
 
 ------------
 
