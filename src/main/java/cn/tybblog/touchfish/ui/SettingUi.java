@@ -94,7 +94,7 @@ public class SettingUi {
         });
         String[] key = persistentState.getKey();
         if (key == null) {
-            key = new String[]{"Alt + ¡ü", "Alt + ¡ý", "Alt + ¡û", "Alt + ¡ý", "Shift + ¡ü", "Shift + ¡ý"};
+            key = new String[]{"Alt + ¡û", "Alt + ¡ú", "Ctrl + 1", "Ctrl + 2", "Shift + ¡ü", "Shift + ¡ý"};
             persistentState.setKey(key);
         }
         updBookReading();

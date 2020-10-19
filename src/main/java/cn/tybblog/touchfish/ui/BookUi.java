@@ -38,7 +38,7 @@ public class BookUi extends JDialog implements Disposable {
     private List<Book> books;
     private PersistentState persistentState = PersistentState.getInstance();
 
-    private final AsyncProcessIcon myLoadingIcon = new AsyncProcessIcon.BigCentered(IdeBundle.message("progress.text.loading"));
+    private final AsyncProcessIcon myLoadingIcon = new AsyncProcessIcon("Loading...");
 
     public BookUi() {
         setContentPane(contentPane);
@@ -52,14 +52,14 @@ public class BookUi extends JDialog implements Disposable {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
                     int row = ((JBTable) e.getSource()).getSelectedRow();
-                    if(persistentState!=null) {
+                    if (persistentState != null) {
                         Book book = books.get(row);
                         List<Book> books = persistentState.getBook();
-                        if (books==null) books=new ArrayList<>();
-                        boolean flag=true;
+                        if (books == null) books = new ArrayList<>();
+                        boolean flag = true;
                         for (Book b : books) {
                             if (b.getUrl().equals(book.getUrl())) {
-                                flag=false;
+                                flag = false;
                                 MessageDialogBuilder.YesNo msg = MessageDialogBuilder.yesNo("提示", "此书已在书架中！");
                                 if (msg.isYes()) onCancel();
                             }
@@ -128,7 +128,7 @@ public class BookUi extends JDialog implements Disposable {
     private void createUIComponents() {
         // TODO: place custom component creation code here
         myTextField = new SearchTextField();
-        bookTale=new JCTable();
+        bookTale = new JCTable();
         myTextField.callBack(SearchButton);
     }
 }
