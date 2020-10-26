@@ -26,7 +26,7 @@
 ------------
 
 ## 下载地址
-[链接](https://github.com/41369ly/touch-fish/releases/download/1.0/fish-1.0-SNAPSHOT.zip "链接")
+[链接](https://github.com/41369ly/touch-fish/releases/download/1.1/fish-1.1-SNAPSHOT.zip "链接")
 
 ## 使用教程
 1).到release中下载压缩包;
