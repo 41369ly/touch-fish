@@ -22,13 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d18ac182-4333-4e29-b6da-6920f6ffd7f0" name="Default Changelist" comment="V1.1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/editorKeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/touchfishStrat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
+    <list default="true" id="d18ac182-4333-4e29-b6da-6920f6ffd7f0" name="Default Changelist" comment="V1.2">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603082551043</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="V1.2">
+      <created>1604654719274</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1604654719275</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -305,7 +307,8 @@
     <MESSAGE value="touch-fish V1.0" />
     <MESSAGE value="readme" />
     <MESSAGE value="V1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.1" />
+    <MESSAGE value="V1.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="V1.2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="309" y="42" key="#Inspections" timestamp="1601483710414">
@@ -372,22 +375,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="442" y="110" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604458684022" />
-    <state width="1323" height="224" key="GridCell.Tab.0.bottom" timestamp="1604654573642">
+    <state width="1323" height="224" key="GridCell.Tab.0.bottom" timestamp="1604654928487">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="224" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1604654573642" />
-    <state width="1323" height="224" key="GridCell.Tab.0.center" timestamp="1604654573642">
+    <state width="1323" height="224" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1604654928487" />
+    <state width="1323" height="224" key="GridCell.Tab.0.center" timestamp="1604654928486">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="224" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1604654573642" />
-    <state width="1323" height="224" key="GridCell.Tab.0.left" timestamp="1604654573642">
+    <state width="1323" height="224" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1604654928486" />
+    <state width="1323" height="224" key="GridCell.Tab.0.left" timestamp="1604654928486">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="224" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1604654573642" />
-    <state width="1323" height="224" key="GridCell.Tab.0.right" timestamp="1604654573642">
+    <state width="1323" height="224" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1604654928486" />
+    <state width="1323" height="224" key="GridCell.Tab.0.right" timestamp="1604654928487">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="224" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1604654573642" />
+    <state width="1323" height="224" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1604654928487" />
     <state width="1323" height="200" key="GridCell.Tab.1.bottom" timestamp="1604654477466">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -420,10 +423,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="551" y="157" key="UIDesigner.ListEditorDialog/0.0.1366.728@0.0.1366.728" timestamp="1601189531009" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1603087810215">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1604654727504">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1603087810215" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1604654727504" />
     <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1604645641926">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
