@@ -22,12 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d18ac182-4333-4e29-b6da-6920f6ffd7f0" name="Default Changelist" comment="touch-fish V1.0">
-      <change afterPath="$PROJECT_DIR$/img/效果图1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/效果图2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/效果图3.png" afterDir="false" />
+    <list default="true" id="d18ac182-4333-4e29-b6da-6920f6ffd7f0" name="Default Changelist" comment="V1.1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/editorKeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/editorKeyListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/editorKeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/touchfishStrat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,11 +95,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="123" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="290" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/ideavim-master" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="com.maddyhome.idea.vim.ui.VimEmulationConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -114,7 +115,7 @@
       <recent name="D:\webproject\fish\src\main\java\cn\tybblog\touchfish\ui" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.fish [buildPlugin]">
+  <component name="RunManager" selected="Gradle.fish [build]">
     <configuration name="Plugin" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -239,10 +240,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.fish [build]" />
         <item itemvalue="Gradle.fish [runIde]" />
         <item itemvalue="Gradle.fish [buildPlugin]" />
         <item itemvalue="Gradle.fish [jar]" />
-        <item itemvalue="Gradle.fish [build]" />
         <item itemvalue="Gradle.fish [buildSearchableOptions]" />
       </list>
     </recent_temporary>
@@ -263,7 +264,28 @@
       <option name="project" value="LOCAL" />
       <updated>1602409694168</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="touch-fish V1.0">
+      <created>1602411406407</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1602411406407</updated>
+    </task>
+    <task id="LOCAL-00003" summary="readme">
+      <created>1602412191813</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1602412191813</updated>
+    </task>
+    <task id="LOCAL-00004" summary="V1.1">
+      <created>1603082551043</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1603082551043</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -281,7 +303,9 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="touch-fish V1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="touch-fish V1.0" />
+    <MESSAGE value="readme" />
+    <MESSAGE value="V1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="V1.1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="309" y="42" key="#Inspections" timestamp="1601483710414">
@@ -304,10 +328,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="423" y="164" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1600840097685" />
-    <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser" timestamp="1602304523809">
+    <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser" timestamp="1604649177829">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1602304523809" />
+    <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1604649177829" />
     <state x="412" y="153" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1601449276936">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -316,14 +340,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="412" y="153" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1600928094381" />
-    <state x="459" y="230" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog" timestamp="1600933944083">
+    <state x="459" y="230" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog" timestamp="1604653144380">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="459" y="230" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog/0.0.1366.728@0.0.1366.728" timestamp="1600933944083" />
-    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602224926722">
+    <state x="459" y="230" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog/0.0.1366.728@0.0.1366.728" timestamp="1604653144380" />
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604559605020">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1602224926722" />
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1604559605020" />
     <state x="464" y="138" key="#com.intellij.uiDesigner.palette.ComponentItemDialog" timestamp="1601449278191">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -332,10 +356,10 @@
     </state>
     <state x="550" y="246" key="#com.intellij.uiDesigner.palette.ComponentItemDialog.OneOff/0.0.1366.728@0.0.1366.728" timestamp="1600929425466" />
     <state x="464" y="138" key="#com.intellij.uiDesigner.palette.ComponentItemDialog/0.0.1366.728@0.0.1366.728" timestamp="1601449278191" />
-    <state width="879" height="466" key="DebuggerActiveHint" timestamp="1602407506284">
+    <state width="1258" height="538" key="DebuggerActiveHint" timestamp="1604652757166">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="879" height="466" key="DebuggerActiveHint/0.0.1366.728@0.0.1366.728" timestamp="1602407506284" />
+    <state width="1258" height="538" key="DebuggerActiveHint/0.0.1366.728@0.0.1366.728" timestamp="1604652757166" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1602409741854">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -344,42 +368,42 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="437" y="152" key="EnvironmentVariablesDialog/0.0.1366.728@0.0.1366.728" timestamp="1600926668773" />
-    <state x="442" y="110" key="FileChooserDialogImpl" timestamp="1601285039301">
+    <state x="442" y="110" key="FileChooserDialogImpl" timestamp="1604458684022">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="442" y="110" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1601285039301" />
-    <state width="1323" height="228" key="GridCell.Tab.0.bottom" timestamp="1602408199094">
+    <state x="442" y="110" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604458684022" />
+    <state width="1323" height="224" key="GridCell.Tab.0.bottom" timestamp="1604654573642">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1602408199094" />
-    <state width="1323" height="228" key="GridCell.Tab.0.center" timestamp="1602408199094">
+    <state width="1323" height="224" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1604654573642" />
+    <state width="1323" height="224" key="GridCell.Tab.0.center" timestamp="1604654573642">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1602408199094" />
-    <state width="1323" height="228" key="GridCell.Tab.0.left" timestamp="1602408199094">
+    <state width="1323" height="224" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1604654573642" />
+    <state width="1323" height="224" key="GridCell.Tab.0.left" timestamp="1604654573642">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1602408199094" />
-    <state width="1323" height="228" key="GridCell.Tab.0.right" timestamp="1602408199094">
+    <state width="1323" height="224" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1604654573642" />
+    <state width="1323" height="224" key="GridCell.Tab.0.right" timestamp="1604654573642">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1602408199094" />
-    <state width="1323" height="171" key="GridCell.Tab.1.bottom" timestamp="1602407943140">
+    <state width="1323" height="224" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1604654573642" />
+    <state width="1323" height="200" key="GridCell.Tab.1.bottom" timestamp="1604654477466">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="171" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1602407943140" />
-    <state width="1323" height="171" key="GridCell.Tab.1.center" timestamp="1602407943140">
+    <state width="1323" height="200" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1604654477466" />
+    <state width="1323" height="200" key="GridCell.Tab.1.center" timestamp="1604654477465">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="171" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1602407943140" />
-    <state width="1323" height="171" key="GridCell.Tab.1.left" timestamp="1602407943125">
+    <state width="1323" height="200" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1604654477465" />
+    <state width="1323" height="200" key="GridCell.Tab.1.left" timestamp="1604654477465">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="171" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1602407943125" />
-    <state width="1323" height="171" key="GridCell.Tab.1.right" timestamp="1602407943140">
+    <state width="1323" height="200" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1604654477465" />
+    <state width="1323" height="200" key="GridCell.Tab.1.right" timestamp="1604654477465">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="171" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1602407943140" />
+    <state width="1323" height="200" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1604654477465" />
     <state x="586" y="65" key="GuiDesigner.FormSource.Dialog" timestamp="1601449492113">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -388,30 +412,30 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="98" key="IDE.errors.dialog/0.0.1366.728@0.0.1366.728" timestamp="1602232179841" />
-    <state x="249" y="14" width="998" height="708" key="SettingsEditor" timestamp="1602320823921">
+    <state x="249" y="14" width="998" height="708" key="SettingsEditor" timestamp="1604458424288">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="249" y="14" width="998" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1602320823921" />
+    <state x="249" y="14" width="998" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1604458424288" />
     <state x="551" y="157" key="UIDesigner.ListEditorDialog" timestamp="1601189531009">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="551" y="157" key="UIDesigner.ListEditorDialog/0.0.1366.728@0.0.1366.728" timestamp="1601189531009" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1602409700799">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1603087810215">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1602409700799" />
-    <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1602406704671">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1603087810215" />
+    <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1604645641926">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1602406704671" />
+    <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1604645641926" />
     <state x="494" y="42" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1601435808959">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="494" y="42" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1601435808959" />
-    <state x="487" y="276" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602409498407">
+    <state x="487" y="276" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603082312024">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="487" y="276" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1602409498407" />
+    <state x="487" y="276" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1603082312024" />
     <state x="450" y="242" key="com.intellij.uiDesigner.propertyInspector.editors.string.StringEditorDialog" timestamp="1602323283710">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -420,10 +444,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="241" y="99" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.728@0.0.1366.728" timestamp="1601370846024" />
-    <state x="47" y="49" width="598" height="594" key="find.popup" timestamp="1602317651044">
+    <state x="533" y="127" width="598" height="594" key="find.popup" timestamp="1604559930675">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="47" y="49" width="598" height="594" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1602317651044" />
+    <state x="533" y="127" width="598" height="594" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1604559930675" />
     <state x="57" y="0" key="new project wizard" timestamp="1600834890901">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -436,15 +460,32 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1601175000966" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1602336695893">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1604560355201">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1602336695893" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1604560355201" />
+    <state x="405" y="275" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604636581363">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="405" y="275" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1366.728@0.0.1366.728" timestamp="1604636581363" />
   </component>
   <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.intellij.openapi.editor.impl.EditorImpl$MyMouseAdapter" memberName="this$0" />
+        <PinnedItemInfo parentTag="com.intellij.ui.components.JBPanel" memberName="listenerList" />
+        <PinnedItemInfo parentTag="sun.awt.AppContext" memberName="threadGroup" />
+        <PinnedItemInfo parentTag="cn.tybblog.touchfish.editorKeyListener$1" memberName="statusBar" />
+        <PinnedItemInfo parentTag="com.intellij.openapi.wm.impl.IdeFrameImpl" memberName="rootPane" />
+        <PinnedItemInfo parentTag="java.awt.AWTEventMulticaster" memberName="a" />
+      </pinned-members>
+    </pin-to-top-manager>
     <watches-manager>
       <configuration name="Remote">
-        <watch expression="e.keyChar" />
+        <watch expression="((ToolWindowsPane)((java.util.ArrayList)((JBPanel)((IdeRootPane)((ProjectFrameHelper)ideFrame).myRootPane).myContentPane).component).get(1)).listenerList" custom="com.intellij.openapi.wm.impl.IdeRootPane,com.intellij.ui.components.JBPanel,com.intellij.openapi.wm.impl.ToolWindowsPane,com.intellij.openapi.wm.impl.ProjectFrameHelper,java.util.ArrayList" />
+        <watch expression="((java.util.ArrayList)((JBPanel)((IdeRootPane)((ProjectFrameHelper)ideFrame).myRootPane).myContentPane).component).get(1)" custom="com.intellij.openapi.wm.impl.IdeRootPane,com.intellij.ui.components.JBPanel,com.intellij.openapi.wm.impl.ProjectFrameHelper,java.util.ArrayList" />
+        <watch expression="e" />
+        <watch expression="rowText.length()" />
       </configuration>
     </watches-manager>
   </component>

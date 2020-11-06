@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="cn.tybblog.touchfish.ui.SettingUi">
   <grid id="27dc6" binding="mainPanel" layout-manager="FormLayout">
     <rowspec value="top:15dlu:noGrow"/>
-    <rowspec value="top:min(d;25px):grow"/>
+    <rowspec value="top:242px:grow"/>
     <rowspec value="center:min(d;25px):noGrow"/>
     <rowspec value="center:min(d;25px):noGrow"/>
     <rowspec value="center:d:noGrow"/>
@@ -14,7 +14,7 @@
     <colspec value="fill:94px:noGrow"/>
     <colspec value="fill:198px:noGrow"/>
     <constraints>
-      <xy x="33" y="26" width="616" height="267"/>
+      <xy x="33" y="26" width="616" height="270"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -44,16 +44,6 @@
         </constraints>
         <properties>
           <text value="删除"/>
-        </properties>
-      </component>
-      <component id="19f5c" class="cn.tybblog.touchfish.ui.table.JCTable" binding="keyMap" custom-create="true">
-        <constraints>
-          <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-          <forms defaultalign-vert="false"/>
-        </constraints>
-        <properties>
-          <autoCreateRowSorter value="false"/>
-          <autoResizeMode value="2"/>
         </properties>
       </component>
       <component id="44d7" class="javax.swing.JLabel">
@@ -104,6 +94,16 @@
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
           <text value=""/>
+        </properties>
+      </component>
+      <component id="21f73" class="cn.tybblog.touchfish.ui.table.JCTable" binding="keyMap" custom-create="true">
+        <constraints>
+          <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <autoCreateRowSorter value="false"/>
+          <autoResizeMode value="2"/>
         </properties>
       </component>
     </children>

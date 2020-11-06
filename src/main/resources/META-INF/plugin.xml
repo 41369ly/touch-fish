@@ -21,7 +21,8 @@
         <applicationService
                 serviceImplementation="cn.tybblog.touchfish.PersistentState"/>
 
-        <editorFactoryListener implementation="cn.tybblog.touchfish.editorKeyListener"/>
+        <postStartupActivity implementation="cn.tybblog.touchfish.touchfishStrat" order="first"/>
+
     </extensions>
 
     <actions>
