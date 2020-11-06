@@ -23,6 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d18ac182-4333-4e29-b6da-6920f6ffd7f0" name="Default Changelist" comment="V1.2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -287,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604654719275</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="V1.2">
+      <created>1604655709271</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1604655709271</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -423,10 +431,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="551" y="157" key="UIDesigner.ListEditorDialog/0.0.1366.728@0.0.1366.728" timestamp="1601189531009" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1604654727504">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1604655743288">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1604654727504" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1604655743288" />
     <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1604645641926">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
