@@ -2,17 +2,22 @@ package cn.tybblog.touchfish.ui;
 
 import cn.tybblog.touchfish.PersistentState;
 import cn.tybblog.touchfish.entity.Book;
-import cn.tybblog.touchfish.ui.field.SearchTextField;
+import cn.tybblog.touchfish.entity.Chapter;
 import cn.tybblog.touchfish.ui.table.JCTable;
-import com.intellij.ui.KeyStrokeAdapter;
+import cn.tybblog.touchfish.util.FileCode;
+import com.intellij.openapi.fileChooser.FileChooserDescriptor;
+import com.intellij.openapi.ui.MessageDialogBuilder;
+import com.intellij.openapi.ui.TextFieldWithBrowseButton;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.LineIterator;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -25,9 +30,24 @@ public class SettingUi {
     private JButton selectBtn;
     private JLabel bookReading;
     private JButton refBtn;
-    private PersistentState persistentState = PersistentState.getInstance();
+    private JButton addBtn;
+    private TextFieldWithBrowseButton filePath;
+    private static PersistentState persistentState = PersistentState.getInstance();
 
     public SettingUi() {
+        addBtn.addActionListener(e -> {
+            if (filePath.getText()==null||"".equals(filePath.getText())||!filePath.getText().substring(filePath.getText().lastIndexOf('.')).equals(".txt")){
+                MessageDialogBuilder.yesNo("提示", "请选择正确的文件(必须为txt)").show();
+                return;
+            }
+            File file = new File(filePath.getText());
+            if (file.exists()) {
+                splitFile(file);
+                addBook();
+            } else
+                MessageDialogBuilder.yesNo("提示", "文件不存在，请选择正确的文件").show();
+        });
+        filePath.addBrowseFolderListener("选择书籍",null, null,new FileChooserDescriptor(true,false,false,false,false,false));
         searchBtn.addActionListener(e -> {
             BookUi dialog = new BookUi();
             dialog.pack();
@@ -47,6 +67,14 @@ public class SettingUi {
         delButton.addActionListener(e -> {
             int selectedRow = bookTable.getSelectedRow();
             if (selectedRow > -1) {
+                Book book = persistentState.getBook().get(selectedRow);
+                if ("自定义导入".equals(book.getAuth())) {
+                    try {
+                        FileUtils.deleteDirectory(new File(book.getUrl().substring(0,book.getUrl().lastIndexOf('\\'))+"\\temp"));
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                }
                 persistentState.getBook().remove(selectedRow);
                 if (persistentState.getBookIndex()==selectedRow) {
                     persistentState.setBookIndex(selectedRow - 1);
@@ -138,8 +166,53 @@ public class SettingUi {
         bookReading.setText(text);
     }
 
+    public static void splitFile(File file){
+        String fileName = file.getName().substring(0,file.getName().lastIndexOf('.'));
+        Book book = new Book(file.getPath(),fileName,"自定义导入");
+        List<Chapter> chapters=new ArrayList<>();
+        LineIterator it = null;
+        try {
+            it = FileUtils.lineIterator(file, FileCode.codeString(file.getPath()));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+        int j=0;
+        while (it.hasNext()) {
+            String strs="";
+            for (int i = 0; i < 99; i++) {
+                if (it.hasNext())
+                    strs+=it.nextLine()+"\n";
+                else
+                    break;
+            }
+            String filePath = file.getPath().substring(0,file.getPath().lastIndexOf('\\')) + "\\temp\\" + fileName + j + ".txt";
+            try {
+                FileUtils.write(new File(filePath),strs,"UTF-8");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Chapter chapter=new Chapter();
+            chapter.setUrl(filePath);
+            chapter.setTitle("");
+            chapter.setRow(-1);
+            chapters.add(chapter);
+            j++;
+        }
+        book.setChapters(chapters);
+        List<Book> books = persistentState.getBook();
+        books.add(book);
+        persistentState.setBook(books);
+        try {
+            it.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void createUIComponents() {
         bookTable = new JCTable();
         keyMap = new JCTable();
+        filePath=new TextFieldWithBrowseButton();
     }
 }

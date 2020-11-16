@@ -2,19 +2,22 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="cn.tybblog.touchfish.ui.SettingUi">
   <grid id="27dc6" binding="mainPanel" layout-manager="FormLayout">
     <rowspec value="top:15dlu:noGrow"/>
-    <rowspec value="top:242px:grow"/>
+    <rowspec value="top:161px:grow"/>
+    <rowspec value="center:34px:noGrow"/>
+    <rowspec value="center:33px:noGrow"/>
     <rowspec value="center:min(d;25px):noGrow"/>
     <rowspec value="center:min(d;25px):noGrow"/>
-    <rowspec value="center:d:noGrow"/>
+    <rowspec value="center:300px:noGrow"/>
     <colspec value="fill:58px:noGrow"/>
     <colspec value="left:34dlu:noGrow"/>
     <colspec value="fill:63px:noGrow"/>
     <colspec value="fill:69px:noGrow"/>
-    <colspec value="fill:66px:noGrow"/>
-    <colspec value="fill:94px:noGrow"/>
-    <colspec value="fill:198px:noGrow"/>
+    <colspec value="fill:64px:noGrow"/>
+    <colspec value="fill:25px:noGrow"/>
+    <colspec value="fill:232px:noGrow"/>
+    <colspec value="fill:77px:noGrow"/>
     <constraints>
-      <xy x="33" y="26" width="616" height="270"/>
+      <xy x="33" y="24" width="656" height="561"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -30,7 +33,7 @@
       </component>
       <component id="fb1e4" class="cn.tybblog.touchfish.ui.table.JCTable" binding="bookTable">
         <constraints>
-          <grid row="1" column="0" row-span="4" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="1" column="0" row-span="6" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
@@ -48,7 +51,7 @@
       </component>
       <component id="44d7" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="6" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties>
@@ -85,9 +88,19 @@
           <text value="刷新"/>
         </properties>
       </component>
-      <component id="c676f" class="javax.swing.JLabel" binding="bookReading">
+      <component id="74f0" class="cn.tybblog.touchfish.ui.table.JCTable" binding="keyMap" custom-create="true">
         <constraints>
-          <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="6" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <autoCreateRowSorter value="false"/>
+          <autoResizeMode value="2"/>
+        </properties>
+      </component>
+      <component id="fc068" class="javax.swing.JLabel" binding="bookReading">
+        <constraints>
+          <grid row="2" column="6" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
           <forms defaultalign-vert="false"/>
         </constraints>
         <properties>
@@ -96,15 +109,21 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="21f73" class="cn.tybblog.touchfish.ui.table.JCTable" binding="keyMap" custom-create="true">
+      <component id="ec0a" class="javax.swing.JButton" binding="addBtn">
         <constraints>
-          <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-          <forms defaultalign-vert="false"/>
+          <grid row="3" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
         </constraints>
         <properties>
-          <autoCreateRowSorter value="false"/>
-          <autoResizeMode value="2"/>
+          <text value="导入"/>
         </properties>
+      </component>
+      <component id="a6236" class="com.intellij.openapi.ui.TextFieldWithBrowseButton" binding="filePath" custom-create="true">
+        <constraints>
+          <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties/>
       </component>
     </children>
   </grid>

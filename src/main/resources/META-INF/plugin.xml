@@ -15,17 +15,11 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-
         <projectConfigurable groupId="Other Settings" displayName="Fish Config" id="thief.id"
                              instance="cn.tybblog.touchfish.Setting"/>
-        <applicationService
-                serviceImplementation="cn.tybblog.touchfish.PersistentState"/>
+        <applicationService serviceImplementation="cn.tybblog.touchfish.PersistentState"/>
 
         <postStartupActivity implementation="cn.tybblog.touchfish.touchfishStrat" order="first"/>
 
     </extensions>
-
-    <actions>
-        <!-- Add your actions here -->
-    </actions>
 </idea-plugin>

@@ -17,6 +17,7 @@
 1. 自动记录上次阅读位置
 1. 搜索关键词提示
 1. 书架功能
+1. txt导入
 
 ## 效果图
 ![效果图1](https://s1.ax1x.com/2020/10/12/028OQP.png "1")
@@ -26,7 +27,7 @@
 ------------
 
 ## 下载地址
-[链接](https://github.com/41369ly/touch-fish/releases/download/V1.2/touch-fish-1.2-SNAPSHOT.zip "链接")
+[链接](https://github.com/41369ly/touch-fish/releases/download/V1.3/touch-fish-1.3-SNAPSHOT.zip "链接")
 
 ## 使用教程
 1).到release中下载压缩包;
@@ -53,4 +54,8 @@
    2. 解决一行显示不全问题
    3. 解决切换书籍还是原来章节需要手动切换章节的问题
 
+2020-11-16 V1.3
+
+   1. 修复自动切换章节时需要按两次热键
+   2. 新增导入txt功能
  ---------

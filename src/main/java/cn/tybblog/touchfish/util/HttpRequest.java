@@ -124,6 +124,7 @@ public class HttpRequest {
         get.setHeader("Accept-Encoding", "gzip");
         HttpClient httpClient = new DefaultHttpClient();
         BufferedReader in = null;
+
         HttpResponse response = httpClient.execute(get);
         int code = response.getStatusLine().getStatusCode();
         if (code == 200) {    //«Î«Û≥…π¶
