@@ -7,6 +7,7 @@ import cn.tybblog.touchfish.util.HttpRequest;
 import cn.tybblog.touchfish.util.ReadBook;
 import com.intellij.openapi.wm.StatusBar;
 import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
+import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -15,6 +16,8 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 public class ReadBookImpl implements ReadBook {
 
@@ -28,6 +31,10 @@ public class ReadBookImpl implements ReadBook {
     private String[] bookText;
     private String cacheRow;
     private StatusBar statusBar;
+    private boolean flag= true;
+    private String[] catcheBookText;
+    private static ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1,
+            new BasicThreadFactory.Builder().namingPattern("example-schedule-pool-%d").daemon(true).build());
 
     public ReadBookImpl(StatusBar stausBar) {
         this.statusBar = stausBar;
@@ -35,16 +42,26 @@ public class ReadBookImpl implements ReadBook {
 
     @Override
     public void preChapter() {
+        if (flag) return;
+        catcheBookText=null;
+        statusBar.setInfo("加载中...");
+        flag = true;
         preChapters();
         if (book!=null&&book.getChapters()!=null)
             statusBar.setInfo("当前章节："+book.getChapters().get(book.getIndex()).getTitle());
+        flag = false;
     }
 
     @Override
     public void nextChapter() {
+        if (flag) return;
+        catcheBookText=null;
+        statusBar.setInfo("加载中...");
+        flag = true;
         nextChapters();
         if (book!=null&&book.getChapters()!=null)
             statusBar.setInfo("当前章节："+book.getChapters().get(book.getIndex()).getTitle());
+        flag = false;
     }
 
     @Override
@@ -63,6 +80,7 @@ public class ReadBookImpl implements ReadBook {
         }
         chapter = book.getChapters().get(chapterIndex);
         bookText = null;
+        flag = false;
     }
 
     public List<Chapter> loadChapters() {
@@ -86,19 +104,44 @@ public class ReadBookImpl implements ReadBook {
     }
 
     public void loadBook() {
-        String bookHtml = "";
-        try {
-            bookHtml = HttpRequest.sendZipGet("http://www.xbiquge.la" + chapter.getUrl());
-        } catch (Exception e) {
-            statusBar.setInfo("网络连接失败...");
+        if (catcheBookText == null) {
+            statusBar.setInfo("加载中...");
+            flag = true;
+            executorService.execute(() -> {
+                syncLoad(true);
+            });
+            executorService.execute(() -> {
+                syncLoad(false);
+            });
             return;
         }
-        Document document = Jsoup.parse(bookHtml);
-        document.select("#content p").remove();
-        String html = document.select("#content").html();
-        String[] bookText = html.replaceAll("&nbsp;", "").replaceAll("\n<br>\n<br>", "").split(" \n<br> \n<br>");
-        maxRow = bookText.length;
-        this.bookText = bookText;
+        bookText=catcheBookText;
+        catcheBookText=null;
+        setInfo();
+        executorService.execute(() -> {
+            syncLoad(false);
+        });
+    }
+
+    private void syncLoad(boolean flag){
+            String bookHtml = "";
+            try {
+                bookHtml = HttpRequest.sendZipGet("http://www.xbiquge.la" + chapter.getUrl());
+            } catch (Exception e) {
+                statusBar.setInfo("网络连接失败...");
+                return;
+            }
+            Document document = Jsoup.parse(bookHtml);
+            document.select("#content p").remove();
+            String html = document.select("#content").html();
+            String[] bookText = html.replaceAll("&nbsp;", "").replaceAll("\n<br>\n<br>", "").split(" \n<br> \n<br>");
+            maxRow = bookText.length;
+            if (flag) {
+                this.bookText = bookText;
+                setInfo();
+                this.flag = false;
+            } else
+                this.catcheBookText = bookText;
     }
 
     public boolean nextChapters() {
@@ -112,7 +155,6 @@ public class ReadBookImpl implements ReadBook {
         }
         book.setIndex(book.getIndex() + 1);
         chapter = book.getChapters().get(book.getIndex());
-        loadBook();
         return false;
     }
 
@@ -123,7 +165,6 @@ public class ReadBookImpl implements ReadBook {
         }
         book.setIndex(book.getIndex() - 1);
         chapter = book.getChapters().get(book.getIndex());
-        loadBook();
         return false;
     }
 
@@ -131,31 +172,44 @@ public class ReadBookImpl implements ReadBook {
 
     @Override
     public void nextInfo() {
-        if (bookText==null) loadBook();
+        if (flag) return;
+        if (bookText==null) {
+            loadBook();
+            return;
+        }
         if (cacheRow==null && chapter.getRow()+1>=maxRow) {
-            if (nextChapters()) return;
+            if (!nextChapters()) {
+                chapter.setRow(chapter.getRow() + 1);
+                loadBook();
+            }
+            return;
         }
         if (cacheRow==null)
             chapter.setRow(chapter.getRow() + 1);
-        if (bookText.length-1>=chapter.getRow()) setInfo();
+        setInfo();
     }
 
     @Override
     public void preInfo() {
+        if (flag) return;
+        if (bookText==null) {
+            loadBook();
+            return;
+        }
         if (chapter.getRow()>-1)
             chapter.setRow(chapter.getRow() - 1);
+        cacheRow=null;
         if (chapter.getRow() < 0) {
-            if (preChapters())
-                return;
+            if (!preChapters()){
+                loadBook();
+            }
+            return;
         }
-        if (bookText==null) loadBook();
-        if (bookText.length-1>=chapter.getRow()) {
-            cacheRow=null;
-            setInfo();
-        }
+        setInfo();
     }
 
     public void setInfo() {
+        if (bookText.length-1<chapter.getRow()) return;
         String rowText = cacheRow == null ? bookText[chapter.getRow()] : cacheRow;
         int textlen = 0;
         if (statusBar instanceof IdeStatusBarImpl) {

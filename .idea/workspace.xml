@@ -22,21 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d18ac182-4333-4e29-b6da-6920f6ffd7f0" name="Default Changelist" comment="V1.2">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/FileCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/ReadBook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/impl/ReadBookImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/impl/ReadFileBookImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="d18ac182-4333-4e29-b6da-6920f6ffd7f0" name="Default Changelist" comment="V1.3">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/LoadChapters.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/LoadChapters.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/touchfishStrat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/touchfishStrat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/BookUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/BookUi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/HttpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/HttpRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/FileCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/FileCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/impl/ReadBookImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/impl/ReadBookImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/impl/ReadFileBookImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/impl/ReadFileBookImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,29 +95,30 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="97" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="331" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dingding" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="73" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="255" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/build/distributions" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\webproject\fish\src\main\java\cn\tybblog\touchfish\ui" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="cn.tybblog.touchfish.ui.field" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\webproject\touch-fish\build\distributions" />
       <recent name="D:\webproject\fish\src\main\resources\icons" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cn.tybblog.touchfish" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="cn.tybblog.touchfish.ui.field" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\webproject\fish\src\main\java\cn\tybblog\touchfish\ui" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.fish [buildPlugin]">
+  <component name="RunManager" selected="Gradle.fish [runIde]">
     <configuration name="Plugin" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -249,8 +243,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.fish [buildPlugin]" />
         <item itemvalue="Gradle.fish [runIde]" />
+        <item itemvalue="Gradle.fish [buildPlugin]" />
         <item itemvalue="Gradle.fish [build]" />
         <item itemvalue="Gradle.fish [jar]" />
         <item itemvalue="Gradle.fish [buildSearchableOptions]" />
@@ -315,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604656063779</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="V1.3">
+      <created>1605511632505</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605511632505</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -336,7 +337,8 @@
     <MESSAGE value="readme" />
     <MESSAGE value="V1.1" />
     <MESSAGE value="V1.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.2" />
+    <MESSAGE value="V1.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="V1.3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="309" y="42" key="#Inspections" timestamp="1601483710414">
@@ -387,14 +389,14 @@
     </state>
     <state x="550" y="246" key="#com.intellij.uiDesigner.palette.ComponentItemDialog.OneOff/0.0.1366.728@0.0.1366.728" timestamp="1600929425466" />
     <state x="464" y="138" key="#com.intellij.uiDesigner.palette.ComponentItemDialog/0.0.1366.728@0.0.1366.728" timestamp="1605061225732" />
-    <state x="438" y="116" width="490" height="546" key="#xdebugger.evaluate" timestamp="1605510359266">
+    <state x="438" y="116" width="490" height="546" key="#xdebugger.evaluate" timestamp="1605848186448">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="438" y="116" width="490" height="546" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1605510359266" />
-    <state width="1258" height="538" key="DebuggerActiveHint" timestamp="1605510460557">
+    <state x="438" y="116" width="490" height="546" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1605848186448" />
+    <state width="1258" height="538" key="DebuggerActiveHint" timestamp="1605847954795">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1258" height="538" key="DebuggerActiveHint/0.0.1366.728@0.0.1366.728" timestamp="1605510460557" />
+    <state width="1258" height="538" key="DebuggerActiveHint/0.0.1366.728@0.0.1366.728" timestamp="1605847954795" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1605254599043">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -407,38 +409,38 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="442" y="110" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1605061787337" />
-    <state width="1323" height="252" key="GridCell.Tab.0.bottom" timestamp="1605510738459">
+    <state width="1323" height="215" key="GridCell.Tab.0.bottom" timestamp="1606834452402">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="252" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1605510738459" />
-    <state width="1323" height="252" key="GridCell.Tab.0.center" timestamp="1605510738459">
+    <state width="1323" height="215" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606834452402" />
+    <state width="1323" height="215" key="GridCell.Tab.0.center" timestamp="1606834452401">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="252" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1605510738459" />
-    <state width="1323" height="252" key="GridCell.Tab.0.left" timestamp="1605510738459">
+    <state width="1323" height="215" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606834452401" />
+    <state width="1323" height="215" key="GridCell.Tab.0.left" timestamp="1606834452401">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="252" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1605510738459" />
-    <state width="1323" height="252" key="GridCell.Tab.0.right" timestamp="1605510738459">
+    <state width="1323" height="215" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606834452401" />
+    <state width="1323" height="215" key="GridCell.Tab.0.right" timestamp="1606834452402">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="252" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1605510738459" />
-    <state width="1323" height="252" key="GridCell.Tab.1.bottom" timestamp="1605510738460">
+    <state width="1323" height="215" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606834452402" />
+    <state width="1323" height="215" key="GridCell.Tab.1.bottom" timestamp="1606834452402">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="252" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1605510738460" />
-    <state width="1323" height="252" key="GridCell.Tab.1.center" timestamp="1605510738460">
+    <state width="1323" height="215" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606834452402" />
+    <state width="1323" height="215" key="GridCell.Tab.1.center" timestamp="1606834452402">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="252" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1605510738460" />
-    <state width="1323" height="252" key="GridCell.Tab.1.left" timestamp="1605510738459">
+    <state width="1323" height="215" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1606834452402" />
+    <state width="1323" height="215" key="GridCell.Tab.1.left" timestamp="1606834452402">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="252" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1605510738459" />
-    <state width="1323" height="252" key="GridCell.Tab.1.right" timestamp="1605510738460">
+    <state width="1323" height="215" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1606834452402" />
+    <state width="1323" height="215" key="GridCell.Tab.1.right" timestamp="1606834452402">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="252" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1605510738460" />
+    <state width="1323" height="215" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1606834452402" />
     <state x="586" y="65" key="GuiDesigner.FormSource.Dialog" timestamp="1601449492113">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -447,22 +449,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="98" key="IDE.errors.dialog/0.0.1366.728@0.0.1366.728" timestamp="1602232179841" />
-    <state x="249" y="14" width="998" height="708" key="SettingsEditor" timestamp="1605248786731">
+    <state x="249" y="14" width="998" height="708" key="SettingsEditor" timestamp="1605512317178">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="249" y="14" width="998" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1605248786731" />
+    <state x="249" y="14" width="998" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1605512317178" />
     <state x="551" y="157" key="UIDesigner.ListEditorDialog" timestamp="1601189531009">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="551" y="157" key="UIDesigner.ListEditorDialog/0.0.1366.728@0.0.1366.728" timestamp="1601189531009" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1604656068163">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1605511634829">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1604656068163" />
-    <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1604645641926">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1605511634829" />
+    <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1605775151186">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1604645641926" />
+    <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1605775151186" />
     <state x="494" y="42" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1601435808959">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -505,15 +507,6 @@
     <state x="405" y="275" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1366.728@0.0.1366.728" timestamp="1604636581363" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.intellij.openapi.editor.impl.EditorImpl$MyMouseAdapter" memberName="this$0" />

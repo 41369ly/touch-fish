@@ -8,6 +8,7 @@ import cn.tybblog.touchfish.util.FileCode;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.ui.MessageDialogBuilder;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
+import com.intellij.ui.table.JBTable;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 
@@ -35,10 +36,30 @@ public class SettingUi {
     private static PersistentState persistentState = PersistentState.getInstance();
 
     public SettingUi() {
+        bookTable.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int row = bookTable.getSelectedRow();
+                    LoadChapters dialog=new LoadChapters(row);
+                    dialog.pack();
+                    dialog.setSize(300, 300);
+                    int x = (Toolkit.getDefaultToolkit().getScreenSize().width - dialog.getSize().width) / 2;
+                    int y = (Toolkit.getDefaultToolkit().getScreenSize().height - dialog.getSize().height) / 2;
+                    dialog.setLocation(x, y);
+                    dialog.setVisible(true);
+                }
+            }
+        });
         addBtn.addActionListener(e -> {
             if (filePath.getText()==null||"".equals(filePath.getText())||!filePath.getText().substring(filePath.getText().lastIndexOf('.')).equals(".txt")){
                 MessageDialogBuilder.yesNo("提示", "请选择正确的文件(必须为txt)").show();
                 return;
+            }
+            for (Book b : persistentState.getBook()) {
+                if (b.getUrl().equals(filePath.getText())) {
+                   MessageDialogBuilder.yesNo("提示", "此书已在书架中！").show();
+                   return;
+                }
             }
             File file = new File(filePath.getText());
             if (file.exists()) {
@@ -159,6 +180,7 @@ public class SettingUi {
             bookReading.setText("书架中还没有书,赶紧去添加");
             return;
         }
+        if(persistentState.getBook().size()>=persistentState.getBookIndex()) persistentState.setBookIndex(persistentState.getBook().size()-1);
         Book book = persistentState.getBook().get(persistentState.getBookIndex());
         String text = "<html>当前阅读书籍：" + book.getBookName();
         if (book.getChapters()!=null&&book.getChapters().size()>0)
@@ -201,6 +223,7 @@ public class SettingUi {
         }
         book.setChapters(chapters);
         List<Book> books = persistentState.getBook();
+        if (books == null) books=new ArrayList<>();
         books.add(book);
         persistentState.setBook(books);
         try {

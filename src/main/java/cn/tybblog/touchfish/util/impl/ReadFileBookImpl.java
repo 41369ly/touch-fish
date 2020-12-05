@@ -73,6 +73,7 @@ public class ReadFileBookImpl implements ReadBook {
 
     @Override
     public void nextInfo() {
+        if(chapter==null||book==null) info();
         if (cacheRow==null && chapter.getRow()+1 >= bookText.size()){
             if (book.getIndex() + 1 >= book.getChapters().size()) {
                 statusBar.setInfo("µ½µ×ÁË£¡");
@@ -88,6 +89,7 @@ public class ReadFileBookImpl implements ReadBook {
 
     @Override
     public void preInfo() {
+        if(chapter==null) info();
         if (chapter.getRow()>-1)
             chapter.setRow(chapter.getRow()-1);
         if (chapter.getRow() < 0){
