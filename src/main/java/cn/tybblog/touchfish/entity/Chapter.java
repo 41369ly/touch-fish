@@ -28,4 +28,9 @@ public class Chapter {
     public void setRow(Integer row) {
         this.row = row;
     }
+
+    @Override
+    public String toString(){
+        return title.trim();
+    }
 }

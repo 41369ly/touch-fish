@@ -40,6 +40,10 @@ public class SettingUi {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
                     int row = bookTable.getSelectedRow();
+                    if ("自定义导入".equals(bookTable.getValueAt(row,1))){
+                        MessageDialogBuilder.yesNo("提示", "此书为自定义导入暂不支持修改章节").show();
+                        return;
+                    }
                     LoadChapters dialog=new LoadChapters(row);
                     dialog.pack();
                     dialog.setSize(300, 300);
@@ -47,6 +51,13 @@ public class SettingUi {
                     int y = (Toolkit.getDefaultToolkit().getScreenSize().height - dialog.getSize().height) / 2;
                     dialog.setLocation(x, y);
                     dialog.setVisible(true);
+                    dialog.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            updBookReading();
+                            super.windowClosed(e);
+                        }
+                    });
                 }
             }
         });

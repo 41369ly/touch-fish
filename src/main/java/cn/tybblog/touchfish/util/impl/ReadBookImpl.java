@@ -16,6 +16,8 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
@@ -33,8 +35,8 @@ public class ReadBookImpl implements ReadBook {
     private StatusBar statusBar;
     private boolean flag= true;
     private String[] catcheBookText;
-    private static ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1,
-            new BasicThreadFactory.Builder().namingPattern("example-schedule-pool-%d").daemon(true).build());
+    private static ExecutorService executorService=Executors.newSingleThreadExecutor();
+
 
     public ReadBookImpl(StatusBar stausBar) {
         this.statusBar = stausBar;
@@ -209,6 +211,7 @@ public class ReadBookImpl implements ReadBook {
     }
 
     public void setInfo() {
+        if(chapter.getRow()==-1) chapter.setRow(0);
         if (bookText.length-1<chapter.getRow()) return;
         String rowText = cacheRow == null ? bookText[chapter.getRow()] : cacheRow;
         int textlen = 0;

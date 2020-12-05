@@ -18,6 +18,7 @@
 1. 搜索关键词提示
 1. 书架功能
 1. txt导入
+1. 切换章节
 
 ## 效果图
 ![效果图1](https://s1.ax1x.com/2020/10/12/028OQP.png "1")
@@ -27,8 +28,9 @@
 ------------
 
 ## 下载地址
-[链接](https://github.com/41369ly/touch-fish/releases/download/V1.3/touch-fish-1.3-SNAPSHOT.zip "链接")
+[点击下载idea版](https://github.com/41369ly/touch-fish/releases/download/V1.4/touch-fish-1.4-idea.zip "idea版")
 
+[点击下载webstorm版](https://github.com/41369ly/touch-fish/releases/download/V1.4/touch-fish-1.4-webstorm.zip "webstorm版")
 ## 使用教程
 1).到release中下载压缩包;
 
@@ -58,4 +60,12 @@
 
    1. 修复自动切换章节时需要按两次热键
    2. 新增导入txt功能
+
+2020-12-05 V1.4
+
+   1. 修复第一次安装插件导入失败问题
+   2. 修复切换章节出现卡顿
+   3. 修复导入乱码问题
+   4. 兼容webstorm
+   5. 新增切换章节功能
  ---------
