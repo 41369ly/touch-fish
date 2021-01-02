@@ -66,6 +66,7 @@ public class SettingUi {
                 MessageDialogBuilder.yesNo("提示", "请选择正确的文件(必须为txt)").show();
                 return;
             }
+            if(persistentState.getBook()==null) persistentState.setBook(new ArrayList<>());
             for (Book b : persistentState.getBook()) {
                 if (b.getUrl().equals(filePath.getText())) {
                    MessageDialogBuilder.yesNo("提示", "此书已在书架中！").show();

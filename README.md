@@ -21,16 +21,16 @@
 1. 切换章节
 
 ## 效果图
-![效果图1](https://s1.ax1x.com/2020/10/12/028OQP.png "1")
-![效果图2](https://s1.ax1x.com/2020/10/12/028jL8.png "2")
-![效果图3](https://s1.ax1x.com/2020/10/12/028qzt.png "3")
-
+![切换章节](https://i.postimg.cc/tJ01hf4y/image.png "切换章节")
+![新增](https://i.postimg.cc/76JGJDDm/image.png "新增")
+![界面](https://i.postimg.cc/0NQJxD4g/image.png "界面")
+![设置](https://i.postimg.cc/1zjVz4x8/image.png "设置")
 ------------
 
 ## 下载地址
-[点击下载idea版](https://github.com/41369ly/touch-fish/releases/download/V1.4/touch-fish-1.4-idea.zip "idea版")
+[点击下载idea版](https://github.com/41369ly/touch-fish/releases/download/V1.5/touch-fish-1.5-idea.zip "idea版")
 
-[点击下载webstorm版](https://github.com/41369ly/touch-fish/releases/download/V1.4/touch-fish-1.4-webstorm.zip "webstorm版")
+[点击下载webstorm版](https://github.com/41369ly/touch-fish/releases/download/V1.5/touch-fish-1.5-webstorm.zip "webstorm版")
 ## 使用教程
 1).到release中下载压缩包;
 
@@ -68,4 +68,8 @@
    3. 修复导入乱码问题
    4. 兼容webstorm
    5. 新增切换章节功能
+   
+2021-01-02 V1.5
+
+   1. 修复已知bug
  ---------
