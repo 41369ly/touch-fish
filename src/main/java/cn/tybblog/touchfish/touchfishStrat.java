@@ -53,7 +53,7 @@ public class touchfishStrat implements StartupActivity.DumbAware {
                 for (int i = 0; i < stateKey.length; i++) {
                     if (i==4) continue;
                     if (!stateKey[i].equals(key)) continue;
-                    if (bookIndex==null||bookIndex!=persistentState.getBookIndex()){
+                    if (bookUtil==null||bookIndex==null||bookIndex!=persistentState.getBookIndex()){
                         bookIndex=persistentState.getBookIndex();
                         List<Book> books = persistentState.getBook();
                         if (books!=null&&books.size()>0){

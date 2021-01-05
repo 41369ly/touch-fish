@@ -66,10 +66,12 @@ public class SettingUi {
                 MessageDialogBuilder.yesNo("提示", "请选择正确的文件(必须为txt)").show();
                 return;
             }
-            for (Book b : persistentState.getBook()) {
-                if (b.getUrl().equals(filePath.getText())) {
-                   MessageDialogBuilder.yesNo("提示", "此书已在书架中！").show();
-                   return;
+            if(persistentState.getBook() != null) {
+                for (Book b : persistentState.getBook()) {
+                    if (b.getUrl().equals(filePath.getText())) {
+                        MessageDialogBuilder.yesNo("提示", "此书已在书架中！").show();
+                        return;
+                    }
                 }
             }
             File file = new File(filePath.getText());
