@@ -22,9 +22,32 @@ import java.util.Vector;
 )
 public class PersistentState implements PersistentStateComponent<PersistentState> {
 
+    /** 书架 */
     private List<Book> book;
+    /** 热键 */
     private String[] key;
+    /** 书架索引  */
     private Integer bookIndex;
+    /** V1.5 新增 数据源 */
+    private String url;
+    /** 是否使用控制台 */
+    private boolean isConsole;
+
+    public boolean isConsole() {
+        return isConsole;
+    }
+
+    public void setConsole(boolean console) {
+        isConsole = console;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public List<Book> getBook() {
         return book;
@@ -62,9 +85,7 @@ public class PersistentState implements PersistentStateComponent<PersistentState
 
     @Override
     public void loadState(@NotNull PersistentState state) {
-        if (null == state) {
-            return;
-        }
         XmlSerializerUtil.copyBean(state, this);
     }
+
 }

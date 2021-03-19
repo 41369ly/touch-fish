@@ -1,13 +1,11 @@
 package cn.tybblog.touchfish.ui.field;
 
-import cn.tybblog.touchfish.util.HttpRequest;
+import cn.tybblog.touchfish.util.NetworkUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.intellij.execution.ui.layout.actions.MinimizeViewAction;
 import com.intellij.openapi.ui.popup.JBPopup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
-import com.intellij.ui.components.JBList;
 
 import java.awt.event.*;
 import java.io.*;
@@ -27,16 +25,8 @@ public class SearchTextField extends JPanel {
     private JButton btn;
     public SearchTextField() {
         super(new BorderLayout());
-        myTextField = new JTextField();//{
-//            @Override
-//            public void processKeyEvent(final KeyEvent e){
-//                if (e.getKeyCode() == e.VK_ENTER){
-//                    return;
-//                }
-//                super.processKeyEvent(e);
-//            }
-//        };
-        list = new JList<String>();
+        myTextField = new JTextField();
+        list = new JList<>();
         myTextField.setForeground(Color.GRAY);
         myTextField.setText("«Î ‰»Î È√˚");
         myTextField.getDocument().addDocumentListener(new DocumentListener() {
@@ -60,17 +50,17 @@ public class SearchTextField extends JPanel {
             @Override
             public void keyPressed(KeyEvent e) {
                 int keycode = e.getKeyCode();
-                if (keycode == e.VK_DOWN) {
+                if (keycode == KeyEvent.VK_DOWN) {
                     int index = list.getSelectedIndex();
                     if (index < list.getLastVisibleIndex()) {
                         list.setSelectedIndex(++index);
                     }
-                } else if (keycode == e.VK_UP) {
+                } else if (keycode == KeyEvent.VK_UP) {
                     int index = list.getSelectedIndex();
                     if (index > list.getFirstVisibleIndex()) {
                         list.setSelectedIndex(--index);
                     }
-                }else if(keycode == e.VK_ENTER){
+                }else if(keycode == KeyEvent.VK_ENTER){
                     String value = list.getSelectedValue();
                     if (value == null) {
                         if (btn!=null) btn.doClick();
@@ -129,24 +119,29 @@ public class SearchTextField extends JPanel {
     }
 
     private void search(String bookName) {
-        if ("".equals(bookName)) return;
-        String out = "";
+        if ("".equals(bookName)) {
+            return;
+        }
+        String jsonp = "";
         try {
-            out = HttpRequest.sendGet("http://unionsug.baidu.com/su", "wd=" + URLEncoder.encode(bookName, "utf-8") + "&cb=a&t=" + System.currentTimeMillis());
+            jsonp = NetworkUtil.sendRequest("http://unionsug.baidu.com/su?wd=" + URLEncoder.encode(bookName, "utf-8") + "&cb=a&t=" + System.currentTimeMillis());
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        if ("".equals(out)) return;
-        String substring = out.substring("a(".length(), out.length() - 2);
+        int startIndex = jsonp.indexOf("(");
+        int endIndex = jsonp.lastIndexOf(")");
+        String jsonstr = jsonp.substring(startIndex+1, endIndex);
         JSONObject json=null;
         try {
-            json = JSON.parseObject(substring);
+            json = JSON.parseObject(jsonstr);
         }catch (Exception e){
             e.printStackTrace();
             return;
         }
         JSONArray s = json.getJSONArray("s");
-        if (s.size() == 0) return;
+        if (s.size() == 0) {
+            return;
+        }
         Vector<String> strings = new Vector<String>();
         for (Object o : s) {
             strings.add(o + "");

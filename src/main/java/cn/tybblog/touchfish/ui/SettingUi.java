@@ -8,11 +8,13 @@ import cn.tybblog.touchfish.util.FileCode;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.ui.MessageDialogBuilder;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
-import com.intellij.ui.table.JBTable;
+import com.intellij.ui.DocumentAdapter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
@@ -22,6 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * @author ly
+ */
 public class SettingUi {
     public JPanel mainPanel;
     private JButton searchBtn;
@@ -33,40 +38,20 @@ public class SettingUi {
     private JButton refBtn;
     private JButton addBtn;
     private TextFieldWithBrowseButton filePath;
+    private JTextField urlField;
     private static PersistentState persistentState = PersistentState.getInstance();
 
     public SettingUi() {
-        bookTable.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    int row = bookTable.getSelectedRow();
-                    if ("自定义导入".equals(bookTable.getValueAt(row,1))){
-                        MessageDialogBuilder.yesNo("提示", "此书为自定义导入暂不支持修改章节").show();
-                        return;
-                    }
-                    LoadChapters dialog=new LoadChapters(row);
-                    dialog.pack();
-                    dialog.setSize(300, 300);
-                    int x = (Toolkit.getDefaultToolkit().getScreenSize().width - dialog.getSize().width) / 2;
-                    int y = (Toolkit.getDefaultToolkit().getScreenSize().height - dialog.getSize().height) / 2;
-                    dialog.setLocation(x, y);
-                    dialog.setVisible(true);
-                    dialog.addWindowListener(new WindowAdapter() {
-                        @Override
-                        public void windowClosed(WindowEvent e) {
-                            updBookReading();
-                            super.windowClosed(e);
-                        }
-                    });
-                }
-            }
-        });
+        urlFieldInit();
+        bookTableInit();
         addBtn.addActionListener(e -> {
             if (filePath.getText()==null||"".equals(filePath.getText())||!filePath.getText().substring(filePath.getText().lastIndexOf('.')).equals(".txt")){
                 MessageDialogBuilder.yesNo("提示", "请选择正确的文件(必须为txt)").show();
                 return;
             }
-            if(persistentState.getBook()==null) persistentState.setBook(new ArrayList<>());
+            if(persistentState.getBook()==null) {
+                persistentState.setBook(new ArrayList<>());
+            }
             for (Book b : persistentState.getBook()) {
                 if (b.getUrl().equals(filePath.getText())) {
                    MessageDialogBuilder.yesNo("提示", "此书已在书架中！").show();
@@ -77,9 +62,11 @@ public class SettingUi {
             if (file.exists()) {
                 splitFile(file);
                 addBook();
-            } else
+            } else {
                 MessageDialogBuilder.yesNo("提示", "文件不存在，请选择正确的文件").show();
+            }
         });
+
         filePath.addBrowseFolderListener("选择书籍",null, null,new FileChooserDescriptor(true,false,false,false,false,false));
         searchBtn.addActionListener(e -> {
             BookUi dialog = new BookUi();
@@ -118,27 +105,50 @@ public class SettingUi {
         });
         refBtn.addActionListener(e -> {
             int selectedRow = bookTable.getSelectedRow();
-            if (selectedRow>=0)
+            if (selectedRow>=0) {
                 persistentState.getBook().get(selectedRow).setChapters(null);
+            }
+        });
+        keyMap.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                int row = keyMap.getSelectedRow();
+                if (row == -1) {
+                    return;
+                }
+                if(e.getButton()>3){
+                    String key= "鼠标侧键"+(e.getButton()-3);
+                    String[] key1 = persistentState.getKey();
+                    key1[row]=key;
+                    keyMap.setValueAt(key, row, 1);
+                    persistentState.setKey(key1);
+                }
+            }
         });
         keyMap.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 int row = keyMap.getSelectedRow();
-                if (row == -1) return;
+                if (row == -1) {
+                    return;
+                }
                 String modifiersText = e.getKeyModifiersText(e.getModifiers());
                 String key = "";
-                if (modifiersText != null && !"".equals(modifiersText))
+                if (modifiersText != null && !"".equals(modifiersText)) {
                     key += modifiersText + "+";
-                if (key.indexOf(e.getKeyText(e.getKeyCode()))==-1)
-                    key += e.getKeyText(e.getKeyCode());
-                else
+                }
+                if (key.indexOf(KeyEvent.getKeyText(e.getKeyCode()))==-1) {
+                    key += KeyEvent.getKeyText(e.getKeyCode());
+                } else {
                     key=key.substring(0,key.length()-1);
-                if (key.indexOf("箭头")>-1)
+                }
+                if (key.indexOf("箭头")>-1) {
                     key=key.replaceAll("向上箭头","↑")
                             .replaceAll("向下箭头","↓")
                             .replaceAll("向右箭头","→")
                             .replaceAll("向左箭头","←");
+                }
                 String[] key1 = persistentState.getKey();
                 key1[row] = key;
                 keyMap.setValueAt(key, row, 1);
@@ -164,7 +174,7 @@ public class SettingUi {
     }
 
     private void addBook() {
-        List<Book> books = this.persistentState.getBook();
+        List<Book> books = persistentState.getBook();
         if (books == null) {
             return;
         }
@@ -192,11 +202,14 @@ public class SettingUi {
             bookReading.setText("书架中还没有书,赶紧去添加");
             return;
         }
-        if(persistentState.getBook().size()>=persistentState.getBookIndex()) persistentState.setBookIndex(persistentState.getBook().size()-1);
+        if(persistentState.getBook().size()>=persistentState.getBookIndex()) {
+            persistentState.setBookIndex(persistentState.getBook().size()-1);
+        }
         Book book = persistentState.getBook().get(persistentState.getBookIndex());
         String text = "<html>当前阅读书籍：" + book.getBookName();
-        if (book.getChapters()!=null&&book.getChapters().size()>0)
+        if (book.getChapters()!=null&&book.getChapters().size()>0) {
             text+="正在阅读：" + book.getChapters().get(book.getIndex()).getTitle()+"</html>";
+        }
         bookReading.setText(text);
     }
 
@@ -215,10 +228,11 @@ public class SettingUi {
         while (it.hasNext()) {
             String strs="";
             for (int i = 0; i < 99; i++) {
-                if (it.hasNext())
+                if (it.hasNext()) {
                     strs+=it.nextLine()+"\n";
-                else
+                } else {
                     break;
+                }
             }
             String filePath = file.getPath().substring(0,file.getPath().lastIndexOf('\\')) + "\\temp\\" + fileName + j + ".txt";
             try {
@@ -245,9 +259,62 @@ public class SettingUi {
         }
     }
 
+    /**
+     * 初始化UI
+     */
     private void createUIComponents() {
         bookTable = new JCTable();
         keyMap = new JCTable();
         filePath=new TextFieldWithBrowseButton();
+        urlField=new JTextField();
+    }
+
+    /**
+     * 数据源文本框初始化
+     */
+    private void urlFieldInit(){
+        if (persistentState.getUrl()==null) {
+            persistentState.setUrl("http://www.xbiquge.la");
+        }
+        urlField.setText(persistentState.getUrl());
+        urlField.getDocument().addDocumentListener(new DocumentAdapter() {
+            @Override
+            protected void textChanged(@NotNull DocumentEvent e) {
+                persistentState.setUrl(urlField.getText());
+            }
+        });
+    }
+
+    /**
+     * 书架数据初始化
+     */
+    private void bookTableInit(){
+        addBook();
+        bookTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int row = bookTable.getSelectedRow();
+                    if ("自定义导入".equals(bookTable.getValueAt(row,1))){
+                        MessageDialogBuilder.yesNo("提示", "此书为自定义导入暂不支持修改章节").show();
+                        return;
+                    }
+                    LoadChapters dialog=new LoadChapters(row);
+                    dialog.pack();
+                    dialog.setSize(300, 300);
+                    int x = (Toolkit.getDefaultToolkit().getScreenSize().width - dialog.getSize().width) / 2;
+                    int y = (Toolkit.getDefaultToolkit().getScreenSize().height - dialog.getSize().height) / 2;
+                    dialog.setLocation(x, y);
+                    dialog.setVisible(true);
+                    dialog.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            updBookReading();
+                            super.windowClosed(e);
+                        }
+                    });
+                }
+            }
+        });
     }
 }

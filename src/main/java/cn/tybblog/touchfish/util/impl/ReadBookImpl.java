@@ -128,7 +128,7 @@ public class ReadBookImpl implements ReadBook {
     private void syncLoad(boolean flag){
             String bookHtml = "";
             try {
-                bookHtml = HttpRequest.sendZipGet("http://www.xbiquge.la" + chapter.getUrl());
+                bookHtml = HttpRequest.sendZipGet("http://www.paoshuzw.com" + chapter.getUrl());
             } catch (Exception e) {
                 statusBar.setInfo("Õ¯¬Á¡¨Ω” ß∞‹...");
                 return;

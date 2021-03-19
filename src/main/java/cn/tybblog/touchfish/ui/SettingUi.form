@@ -7,6 +7,7 @@
     <rowspec value="center:33px:noGrow"/>
     <rowspec value="center:min(d;25px):noGrow"/>
     <rowspec value="center:min(d;25px):noGrow"/>
+    <rowspec value="top:16dlu:noGrow"/>
     <rowspec value="center:300px:noGrow"/>
     <colspec value="fill:58px:noGrow"/>
     <colspec value="left:34dlu:noGrow"/>
@@ -14,10 +15,11 @@
     <colspec value="fill:69px:noGrow"/>
     <colspec value="fill:64px:noGrow"/>
     <colspec value="fill:25px:noGrow"/>
-    <colspec value="fill:232px:noGrow"/>
-    <colspec value="fill:77px:noGrow"/>
+    <colspec value="fill:58px:noGrow"/>
+    <colspec value="left:68dlu:noGrow"/>
+    <colspec value="fill:98px:noGrow"/>
     <constraints>
-      <xy x="33" y="24" width="656" height="561"/>
+      <xy x="33" y="24" width="639" height="588"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -33,7 +35,7 @@
       </component>
       <component id="fb1e4" class="cn.tybblog.touchfish.ui.table.JCTable" binding="bookTable">
         <constraints>
-          <grid row="1" column="0" row-span="6" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="1" column="0" row-span="7" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
@@ -51,7 +53,7 @@
       </component>
       <component id="44d7" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="6" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="6" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties>
@@ -90,7 +92,7 @@
       </component>
       <component id="74f0" class="cn.tybblog.touchfish.ui.table.JCTable" binding="keyMap" custom-create="true">
         <constraints>
-          <grid row="1" column="6" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="6" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
           <forms defaultalign-vert="false"/>
         </constraints>
         <properties>
@@ -100,7 +102,7 @@
       </component>
       <component id="fc068" class="javax.swing.JLabel" binding="bookReading">
         <constraints>
-          <grid row="2" column="6" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="6" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
           <forms defaultalign-vert="false"/>
         </constraints>
         <properties>
@@ -111,7 +113,7 @@
       </component>
       <component id="ec0a" class="javax.swing.JButton" binding="addBtn">
         <constraints>
-          <grid row="3" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties>
@@ -120,10 +122,30 @@
       </component>
       <component id="a6236" class="com.intellij.openapi.ui.TextFieldWithBrowseButton" binding="filePath" custom-create="true">
         <constraints>
-          <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="6" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties/>
+      </component>
+      <component id="ea448" class="javax.swing.JTextField" binding="urlField" custom-create="true">
+        <constraints>
+          <grid row="6" column="7" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="adf65" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <text value="数据源"/>
+        </properties>
       </component>
     </children>
   </grid>
