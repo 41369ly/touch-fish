@@ -3,6 +3,8 @@ package cn.tybblog.touchfish.util;
 import cn.tybblog.touchfish.PersistentState;
 import cn.tybblog.touchfish.entity.Book;
 import cn.tybblog.touchfish.entity.Chapter;
+import cn.tybblog.touchfish.exception.FishException;
+import cn.tybblog.touchfish.listener.EventListener;
 import com.intellij.openapi.ui.MessageDialogBuilder;
 import okhttp3.*;
 import org.jsoup.Jsoup;
@@ -15,12 +17,12 @@ import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class NetworkUtil {
     private static OkHttpClient client = new OkHttpClient();
     private static PersistentState persistentState = PersistentState.getInstance();
-
 
     /**
      * 搜索书
@@ -56,13 +58,46 @@ public class NetworkUtil {
         Elements elements = doc.select("#list dl dd a");
         List<Chapter> chapters = new ArrayList<>();
         for (Element element : elements) {
-            Chapter chapter = new Chapter();
-            chapter.setTitle(element.text());
-            chapter.setRow(-1);
-            chapter.setUrl(element.attr("href"));
+            Chapter chapter = new Chapter(persistentState.getUrl()+element.attr("href"),element.text());
             chapters.add(chapter);
         }
         return chapters;
+    }
+
+    /**
+     * 获取书本内容
+     * @param url 地址
+     * @param callback 回调类
+     */
+    public static void getBookText(String url,ChapterCallback callback,String baseMethod){
+        EventListener.loading=true;
+        sendRequest(url, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                if (e instanceof SocketTimeoutException) {
+                    ConsoleUtils.info("加载超时");
+                }
+                if (e instanceof ConnectException || e instanceof UnknownHostException) {
+                    ConsoleUtils.info("网络连接失败或域名错误！");
+                }
+                EventListener.loading=false;
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Document document = Jsoup.parse(response.body().string());
+                document.select("#content p").remove();
+                String html = document.select("#content").html();
+                String[] bookText = html.replaceAll("&nbsp;", "").replaceAll("\n<br>\n<br>", "").split(" \n<br> \n<br>");
+                try {
+                    callback.chapter(Arrays.asList(bookText),baseMethod);
+                } catch (FishException e) {
+                    ConsoleUtils.info(e.getMessage());
+                    EventListener.loading=false;
+                }
+            }
+        });
     }
 
 

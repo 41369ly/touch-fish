@@ -25,29 +25,47 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d18ac182-4333-4e29-b6da-6920f6ffd7f0" name="Default Changelist" comment="V1.5">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/listener/EventListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/HttpCallBack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/NetworkUtil.java" afterDir="false" />
+    <list default="true" id="d18ac182-4333-4e29-b6da-6920f6ffd7f0" name="Default Changelist" comment="V1.6.1">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/ideaIC_2020_2_2_sources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/exception/FishException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/dialog/FishDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/ChapterCallback.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/ConsoleUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/FileSplitUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/JtableDataUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/KeyMapFormatUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/PersistentState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/PersistentState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/touchfishStrat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/touchfishStrat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/entity/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/entity/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/entity/Chapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/entity/Chapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/listener/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/listener/EventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/touchfishStrat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/TouchfishStrat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/BookUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/BookUi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/LoadChapters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/LoadChapters.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/field/SearchTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/field/SearchTextField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/impl/ReadBookImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/impl/ReadBookImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/FileCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/FileCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/HttpCallBack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/HttpRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/NetworkUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/NetworkUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/impl/ReadBookImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/impl/ReadFileBookImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -106,28 +124,29 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="176" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="255" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/build/distributions" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../gradle-6.6.1/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2020.2.2/146f0d07ca9c53b7679af35824afbf3eb3c7263c/ideaIC-2020.2.2-sources.jar" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.37290168" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\webproject\fish\src\main\java\cn\tybblog\touchfish\ui" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="cn.tybblog.touchfish.ui.field" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\webproject\touch-fish\src\main\java\cn\tybblog\touchfish\util" />
       <recent name="D:\webproject\touch-fish\build\distributions" />
       <recent name="D:\webproject\fish\src\main\resources\icons" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cn.tybblog.touchfish" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="cn.tybblog.touchfish.ui.field" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\webproject\fish\src\main\java\cn\tybblog\touchfish\ui" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.fish [runIde]">
+  <component name="RunManager" selected="Gradle.fish [buildPlugin]">
     <configuration name="Plugin" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -252,8 +271,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.fish [runIde]" />
         <item itemvalue="Gradle.fish [buildPlugin]" />
+        <item itemvalue="Gradle.fish [runIde]" />
         <item itemvalue="Gradle.fish [build]" />
         <item itemvalue="Gradle.fish [jar]" />
         <item itemvalue="Gradle.fish [buildSearchableOptions]" />
@@ -332,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609821929151</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="V1.6.1">
+      <created>1616117444836</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1616117444836</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -349,79 +375,91 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
     <MESSAGE value="touch-fish V1.0" />
     <MESSAGE value="readme" />
     <MESSAGE value="V1.1" />
     <MESSAGE value="V1.2" />
     <MESSAGE value="V1.3" />
     <MESSAGE value="V1.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.5" />
+    <MESSAGE value="V1.6.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="V1.6.1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="309" y="42" key="#Inspections" timestamp="1616077564897">
+    <state x="309" y="42" key="#Inspections" timestamp="1617257748364">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="309" y="42" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1616077564897" />
-    <state x="275" y="0" width="816" height="728" key="#Intentions" timestamp="1616075179821">
+    <state x="309" y="42" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1617257748364" />
+    <state x="275" y="0" width="816" height="728" key="#Intentions" timestamp="1616746669845">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="0" width="816" height="728" key="#Intentions/0.0.1366.728@0.0.1366.728" timestamp="1616075179821" />
-    <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser" timestamp="1616084620661">
+    <state x="275" y="0" width="816" height="728" key="#Intentions/0.0.1366.728@0.0.1366.728" timestamp="1616746669845" />
+    <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser" timestamp="1617529515762">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1616084620661" />
+    <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1617529515762" />
     <state x="386" y="234" key="#com.intellij.refactoring.memberPullUp.PullUpDialog" timestamp="1616084605293">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="386" y="234" key="#com.intellij.refactoring.memberPullUp.PullUpDialog/0.0.1366.728@0.0.1366.728" timestamp="1616084605293" />
-    <state x="459" y="196" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog" timestamp="1616060818477">
+    <state x="459" y="256" width="447" height="222" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1617618798519">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="459" y="196" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog/0.0.1366.728@0.0.1366.728" timestamp="1616060818477" />
-    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616077972021">
+    <state x="459" y="256" width="447" height="222" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1617618798519" />
+    <state x="459" y="196" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog" timestamp="1617782500373">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1616077972021" />
-    <state x="438" y="116" width="490" height="546" key="#xdebugger.evaluate" timestamp="1616085787818">
+    <state x="459" y="196" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog/0.0.1366.728@0.0.1366.728" timestamp="1617782500373" />
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617529460383">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="438" y="116" width="490" height="546" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1616085787818" />
-    <state width="1258" height="538" key="DebuggerActiveHint" timestamp="1616085164309">
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1617529460383" />
+    <state x="541" y="29" width="490" height="546" key="#xdebugger.evaluate" timestamp="1617782199773">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1258" height="538" key="DebuggerActiveHint/0.0.1366.728@0.0.1366.728" timestamp="1616085164309" />
-    <state width="1323" height="280" key="GridCell.Tab.0.bottom" timestamp="1616086619150">
+    <state x="541" y="29" width="490" height="546" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1617782199773" />
+    <state width="1258" height="536" key="DebuggerActiveHint" timestamp="1617786366844">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="280" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1616086619150" />
-    <state width="1323" height="280" key="GridCell.Tab.0.center" timestamp="1616086619149">
+    <state width="1258" height="536" key="DebuggerActiveHint/0.0.1366.728@0.0.1366.728" timestamp="1617786366844" />
+    <state x="568" y="130" key="FileChooserDialogImpl" timestamp="1617528234897">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="280" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1616086619149" />
-    <state width="1323" height="280" key="GridCell.Tab.0.left" timestamp="1616086619149">
+    <state x="568" y="130" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1617528234897" />
+    <state width="1323" height="160" key="GridCell.Tab.0.bottom" timestamp="1617786786667">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="280" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1616086619149" />
-    <state width="1323" height="280" key="GridCell.Tab.0.right" timestamp="1616086619150">
+    <state width="1323" height="160" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1617786786667" />
+    <state width="1323" height="160" key="GridCell.Tab.0.center" timestamp="1617786786667">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="280" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1616086619150" />
-    <state width="1323" height="280" key="GridCell.Tab.1.bottom" timestamp="1616086619150">
+    <state width="1323" height="160" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1617786786667" />
+    <state width="1323" height="160" key="GridCell.Tab.0.left" timestamp="1617786786667">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="280" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1616086619150" />
-    <state width="1323" height="280" key="GridCell.Tab.1.center" timestamp="1616086619150">
+    <state width="1323" height="160" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1617786786667" />
+    <state width="1323" height="160" key="GridCell.Tab.0.right" timestamp="1617786786667">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="280" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1616086619150" />
-    <state width="1323" height="280" key="GridCell.Tab.1.left" timestamp="1616086619150">
+    <state width="1323" height="160" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1617786786667" />
+    <state width="1323" height="217" key="GridCell.Tab.1.bottom" timestamp="1617786733139">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="280" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1616086619150" />
-    <state width="1323" height="280" key="GridCell.Tab.1.right" timestamp="1616086619150">
+    <state width="1323" height="217" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1617786733139" />
+    <state width="1323" height="217" key="GridCell.Tab.1.center" timestamp="1617786733139">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="280" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1616086619150" />
+    <state width="1323" height="217" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1617786733139" />
+    <state width="1323" height="217" key="GridCell.Tab.1.left" timestamp="1617786733139">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="217" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1617786733139" />
+    <state width="1323" height="217" key="GridCell.Tab.1.right" timestamp="1617786733139">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="217" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1617786733139" />
     <state x="129" y="55" key="MergeDialog" timestamp="1609821992973">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -430,18 +468,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="318" y="124" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1609821992989" />
-    <state x="249" y="14" width="998" height="708" key="SettingsEditor" timestamp="1616076717935">
+    <state x="249" y="14" width="998" height="708" key="SettingsEditor" timestamp="1617528362488">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="249" y="14" width="998" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1616076717935" />
+    <state x="249" y="14" width="998" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1617528362488" />
     <state x="529" y="276" key="VCS.ChangelistChooser" timestamp="1616051030773">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="529" y="276" key="VCS.ChangelistChooser/0.0.1366.728@0.0.1366.728" timestamp="1616051030773" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1609822146262">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1616118591937">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1609822146262" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616118591937" />
     <state width="686" height="372" key="XDebugger.FullValuePopup" timestamp="1616085763764">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -450,25 +488,20 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="487" y="276" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1611728177917" />
-    <state x="384" y="96" width="598" height="536" key="find.popup" timestamp="1616074549490">
+    <state x="384" y="96" width="598" height="536" key="find.popup" timestamp="1617263588934">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="384" y="96" width="598" height="536" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1616074549490" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1616076919870">
+    <state x="384" y="96" width="598" height="536" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1617263588934" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1616934688621">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1616076919870" />
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1616934688621" />
+    <state x="266" y="80" width="672" height="678" key="search.everywhere.popup" timestamp="1617631161793">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="266" y="80" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1617631161793" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/HttpRequest.java</url>
-          <line>102</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.intellij.openapi.editor.impl.EditorImpl$MyMouseAdapter" memberName="this$0" />
@@ -477,16 +510,9 @@
         <PinnedItemInfo parentTag="cn.tybblog.touchfish.editorKeyListener$1" memberName="statusBar" />
         <PinnedItemInfo parentTag="com.intellij.openapi.wm.impl.IdeFrameImpl" memberName="rootPane" />
         <PinnedItemInfo parentTag="java.awt.AWTEventMulticaster" memberName="a" />
+        <PinnedItemInfo parentTag="java.awt.EventDispatchThread" memberName="group" />
       </pinned-members>
     </pin-to-top-manager>
-    <watches-manager>
-      <configuration name="Remote">
-        <watch expression="((ToolWindowsPane)((java.util.ArrayList)((JBPanel)((IdeRootPane)((ProjectFrameHelper)ideFrame).myRootPane).myContentPane).component).get(1)).listenerList" custom="com.intellij.openapi.wm.impl.IdeRootPane,com.intellij.ui.components.JBPanel,com.intellij.openapi.wm.impl.ToolWindowsPane,com.intellij.openapi.wm.impl.ProjectFrameHelper,java.util.ArrayList" />
-        <watch expression="((java.util.ArrayList)((JBPanel)((IdeRootPane)((ProjectFrameHelper)ideFrame).myRootPane).myContentPane).component).get(1)" custom="com.intellij.openapi.wm.impl.IdeRootPane,com.intellij.ui.components.JBPanel,com.intellij.openapi.wm.impl.ProjectFrameHelper,java.util.ArrayList" />
-        <watch expression="e" />
-        <watch expression="rowText.length()" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>

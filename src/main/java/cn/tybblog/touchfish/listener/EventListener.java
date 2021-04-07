@@ -2,12 +2,18 @@ package cn.tybblog.touchfish.listener;
 
 import cn.tybblog.touchfish.PersistentState;
 import cn.tybblog.touchfish.entity.Book;
-import cn.tybblog.touchfish.util.ReadBook;
-import cn.tybblog.touchfish.util.impl.ReadBookImpl;
-import cn.tybblog.touchfish.util.impl.ReadFileBookImpl;
+import cn.tybblog.touchfish.entity.Chapter;
+import cn.tybblog.touchfish.exception.FishException;
+import cn.tybblog.touchfish.util.ChapterCallback;
+import cn.tybblog.touchfish.util.ConsoleUtils;
+import cn.tybblog.touchfish.util.KeyMapFormatUtils;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.MessageDialogBuilder;
 import com.intellij.openapi.wm.StatusBar;
 import com.intellij.openapi.wm.WindowManager;
+import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
 
 import java.awt.*;
 import java.awt.event.AWTEventListener;
@@ -15,15 +21,20 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-public class EventListener implements KeyEventPostProcessor,AWTEventListener {
-    private StatusBar statusBar;
+public class EventListener implements KeyEventPostProcessor, AWTEventListener, ChapterCallback {
     private PersistentState persistentState = PersistentState.getInstance();
-    private Integer bookIndex;
-    private ReadBook bookUtil;
+    private StatusBar statusBar;
+    public static Book book;
     private boolean flag = false;
+    private List<String> cacheRow;
+    private int cacheIndex = -1;
+    private List<String> bookText;
+    public static boolean loading=false;
+
+    public static String LOADING_TEXT = "加载中...";
 
     public EventListener(Project project){
-        statusBar=WindowManager.getInstance().getStatusBar(project);
+        statusBar = WindowManager.getInstance().getStatusBar(project);
     }
 
     @Override
@@ -31,23 +42,18 @@ public class EventListener implements KeyEventPostProcessor,AWTEventListener {
         if (e.getID() != KeyEvent.KEY_PRESSED) {
             return false;
         }
-        String modifiersText = e.getKeyModifiersText(e.getModifiers());
-        String key = "";
-        if (modifiersText != null && !"".equals(modifiersText)) {
-            key += modifiersText + "+";
+        String key = KeyMapFormatUtils.keyMapFormat(e);
+        if ("".equals(key)) {
+            return false;
         }
-        if (key.indexOf(KeyEvent.getKeyText(e.getKeyCode())) == -1) {
-            key += KeyEvent.getKeyText(e.getKeyCode());
-        } else {
-            key = key.substring(0, key.length() - 1);
+        try {
+            doRead(key);
+        } catch (FishException fishException) {
+            ConsoleUtils.info(fishException.getMessage());
+            if(!LOADING_TEXT.equals(fishException.getMessage())) {
+                EventListener.loading = false;
+            }
         }
-        if (key.indexOf("箭头") > -1) {
-            key = key.replaceAll("向上箭头", "↑")
-                    .replaceAll("向下箭头", "↓")
-                    .replaceAll("向右箭头", "→")
-                    .replaceAll("向左箭头", "←");
-        }
-        doread(key);
         return false;
     }
 
@@ -58,61 +64,189 @@ public class EventListener implements KeyEventPostProcessor,AWTEventListener {
             if (e.getButton()<4) {
                 return;
             }
-            doread("鼠标侧键"+(e.getButton()-3));
+            try {
+                doRead("鼠标侧键"+(e.getButton()-3));
+            } catch (FishException fishException) {
+                ConsoleUtils.info(fishException.getMessage());
+                EventListener.loading=false;
+            }
         }
     }
 
-    public void doread(String key){
+    public void doRead(String key) throws FishException {
         String[] stateKey = persistentState.getKey();
         if(stateKey==null) {
             return;
         }
+        if (loading){
+            return;
+        }
+        if (book==null){
+            initBook();
+            return;
+        }
         if (stateKey[4].equals(key)) {
-            flag=false;
+            flag=!flag;
+            if (flag) {
+                ConsoleUtils.info("");
+            }
+            return;
         }
         if (flag) {
             return;
         }
-        for (int i = 0; i < stateKey.length; i++) {
-            if (i==4) {
-                continue;
-            }
+        for (int i = 0; i < 4; i++) {
             if (!stateKey[i].equals(key)) {
                 continue;
             }
-            if (bookUtil==null||bookIndex==null|| !bookIndex.equals(persistentState.getBookIndex())){
-                bookIndex=persistentState.getBookIndex();
-                List<Book> books = persistentState.getBook();
-                if (books!=null&&books.size()>0){
-                    Book book = books.get(bookIndex);
-                    //判断是否为文件书籍
-                    if (book.getAuth().equals("自定义导入")){
-                        bookUtil=new ReadFileBookImpl(statusBar);
-                    } else {
-                        bookUtil=new ReadBookImpl(statusBar);
-                    }
-                }
-                bookUtil.info();
-            }
             switch (i) {
                 case 0:
-                    bookUtil.preInfo();
+                    preCacheRow();
                     break;
                 case 1:
-                    bookUtil.nextInfo();
+                    nextCacheRow();
                     break;
                 case 2:
-                    bookUtil.preChapter();
+//                    preChapter();
                     break;
                 case 3:
-                    bookUtil.nextChapter();
+//                    nextChapter();
                     break;
-                case 5:
-                    statusBar.setInfo("");
-                    flag=true;
-                    break;
+                default:
             }
             break;
         }
     }
+
+    public void initBook() throws FishException {
+        book=persistentState.getBookByIndex();
+        bookText=book.loadChapter(this,Book.BASE_METHOD_NEXT);
+        Chapter chapter = persistentState.getBookByIndex().getChapterByIndex();
+        if (chapter.nextRow()>=bookText.size()){
+            chapter.setRow(bookText.size()-1);
+        } else {
+            splitBookText(chapter.getRow());
+        }
+        cacheIndex=-1;
+        nextCacheRow();
+    }
+
+    /**
+     * 上一行
+     * @return 是否加载成功
+     */
+    private void preInfo() throws FishException {
+        Chapter chapter = persistentState.getBookByIndex().getChapterByIndex();
+        if (chapter.preRow()<0){
+            bookText=book.preChapter(this);
+            chapter = persistentState.getBookByIndex().getChapterByIndex();
+            chapter.setRow(bookText.size()-1);
+        }
+        splitBookText(chapter.getRow());
+        cacheIndex=cacheRow.size();
+    }
+
+    /**
+     * 下一行
+     * @return 是否加载成功
+     */
+    private void nextInfo() throws FishException {
+        Chapter chapter = persistentState.getBookByIndex().getChapterByIndex();
+        if (chapter.nextRow()>=bookText.size()){
+            bookText=book.nextChapter(this);
+            chapter = persistentState.getBookByIndex().getChapterByIndex();
+            if (chapter.nextRow()>=bookText.size()){
+                chapter.setRow(bookText.size()-1);
+            }
+        }
+        splitBookText(chapter.getRow());
+        cacheIndex=-1;
+    }
+
+    /**
+     * 上一行缓存
+     */
+    private void preCacheRow() throws FishException {
+        if (cacheRow == null || cacheRow.size() == 0 || cacheIndex < 1) {
+            preInfo();
+        }
+        --cacheIndex;
+        showCacheRow();
+    }
+
+    /**
+     * 下一行缓存
+     *
+     * @return 是否有缓存
+     */
+    private void nextCacheRow() throws FishException {
+        if (cacheRow == null || cacheRow.size() == 0 || cacheIndex+1 >= cacheRow.size()) {
+            nextInfo();
+        }
+        ++cacheIndex;
+        showCacheRow();
+    }
+
+    /**
+     * 显示缓存行
+     */
+    private void showCacheRow(){
+        if (cacheRow == null || cacheRow.size() == 0 || cacheIndex < 0 || cacheIndex >= cacheRow.size()) {
+            ConsoleUtils.info("加载缓存行时遇到未知错误");
+            return;
+        }
+        ConsoleUtils.info(cacheRow.get(cacheIndex));
+    }
+
+    /**
+     * 根据控制台长度分割字符串
+     */
+    private void splitBookText(int row){
+        cacheRow = Lists.newArrayList(Splitter.fixedLength(getConsoleLen()).split(bookText.get(row)));
+    }
+
+    /**
+     * 获取控制台可显示长度
+     * @return 控制台可显示长度
+     */
+    private int getConsoleLen(){
+        int textLen = 0;
+        if (statusBar instanceof IdeStatusBarImpl) {
+            IdeStatusBarImpl bar = (IdeStatusBarImpl) statusBar;
+            int width = bar.getWidth();
+            textLen = width / 17;
+        }
+        if(textLen==0){
+            MessageDialogBuilder.yesNo("提示", "自动获取控制台长度时出错").show();
+            textLen=10;
+        }
+        return textLen;
+    }
+
+    /**
+     * 异步回调
+     * @param bookText 书本内容
+     * @param baseMethod 来源方法
+     */
+    @Override
+    public void chapter(List<String> bookText, String baseMethod) throws FishException {
+        loading=false;
+        this.bookText=bookText;
+        Chapter chapter = persistentState.getBookByIndex().getChapterByIndex();
+        if (Book.BASE_METHOD_NEXT.equals(baseMethod)){
+            if (chapter.nextRow()>=bookText.size()){
+                chapter.setRow(bookText.size()-1);
+            } else {
+                splitBookText(chapter.getRow());
+            }
+            cacheIndex=-1;
+            nextCacheRow();
+        } else if (Book.BASE_METHOD_PRE.equals(baseMethod)){
+            chapter.setRow(bookText.size());
+            splitBookText(chapter.preRow());
+            cacheIndex=cacheRow.size();
+            preCacheRow();
+        }
+    }
+
 }

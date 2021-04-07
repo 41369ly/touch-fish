@@ -5,6 +5,15 @@ public class Chapter {
     private String title;
     private Integer row;
 
+    public Chapter() {
+    }
+
+    public Chapter(String url, String title) {
+        this.url = url;
+        this.title = title;
+        this.row = -1;
+    }
+
     public String getUrl() {
         return url;
     }
@@ -27,6 +36,15 @@ public class Chapter {
 
     public void setRow(Integer row) {
         this.row = row;
+    }
+
+    public int nextRow(){return ++row;}
+
+    public int preRow(){
+        if (row<0){
+            return row;
+        }
+        return --row;
     }
 
     @Override

@@ -63,7 +63,9 @@ public class SearchTextField extends JPanel {
                 }else if(keycode == KeyEvent.VK_ENTER){
                     String value = list.getSelectedValue();
                     if (value == null) {
-                        if (btn!=null) btn.doClick();
+                        if (btn!=null) {
+                            btn.doClick();
+                        }
                         return;
                     }
                     myTextField.setText(value);

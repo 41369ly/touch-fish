@@ -19,7 +19,7 @@
                              instance="cn.tybblog.touchfish.Setting"/>
         <applicationService serviceImplementation="cn.tybblog.touchfish.PersistentState"/>
 
-        <postStartupActivity implementation="cn.tybblog.touchfish.touchfishStrat" order="first"/>
-
+        <postStartupActivity implementation="cn.tybblog.touchfish.TouchfishStrat" order="first"/>
     </extensions>
+
 </idea-plugin>

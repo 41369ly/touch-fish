@@ -1,19 +1,27 @@
 package cn.tybblog.touchfish;
 
 import cn.tybblog.touchfish.entity.Book;
+import cn.tybblog.touchfish.entity.Chapter;
+import cn.tybblog.touchfish.exception.FishException;
+import cn.tybblog.touchfish.util.FileSplitUtils;
+import cn.tybblog.touchfish.util.NetworkUtil;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.ui.MessageDialogBuilder;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 
+/**
+ * @author ly
+ */
 @State(
         name = "PersistentState",
         storages = {@Storage(
@@ -33,7 +41,7 @@ public class PersistentState implements PersistentStateComponent<PersistentState
     /** 是否使用控制台 */
     private boolean isConsole;
 
-    public boolean isConsole() {
+    public boolean getIsConsole() {
         return isConsole;
     }
 
@@ -71,6 +79,80 @@ public class PersistentState implements PersistentStateComponent<PersistentState
 
     public void setBookIndex(Integer bookIndex) {
         this.bookIndex = bookIndex;
+    }
+
+    /**
+     * 新增书
+     * @param book
+     * @return 是否新增成功
+     */
+    public boolean addBook(Book book) {
+        if (this.book ==null) {
+            this.book=new ArrayList<>();
+        }
+        for (Book book1 : this.book) {
+            if (book1.getUrl().equals(book.getUrl())) {
+                return false;
+            }
+        }
+        //自定义导入书籍分割文件
+        if (Book.FILE_AUTH.equals(book.getAuth())) {
+            Book split = FileSplitUtils.split(book);
+            if (split==null) {
+                MessageDialogBuilder.yesNo("提示","分割文件失败").show();
+                return false;
+            }
+            book=split;
+        }else{
+            book.setChapters(NetworkUtil.getChapter(book.getUrl()));
+        }
+        this.book.add(book);
+        return true;
+    }
+
+    /**
+     * 删除书籍
+     * @param index 索引
+     * @return 是否删除成功
+     */
+    public boolean delBook(int index){
+        if (index<0||index>book.size()) {
+            return false;
+        }
+        if (Book.FILE_AUTH.equals(book.get(index).getAuth())) {
+            for (Chapter chapter : book.get(index).getChapters()) {
+                new File(chapter.getUrl()).delete();
+            }
+        }
+        book.remove(index);
+        if (index==bookIndex) {
+            bookIndex--;
+        }
+        return true;
+    }
+
+    /**
+     * 更新热键
+     * @param key
+     * @param index
+     */
+    public void setKeyMap(String key,int index){
+        this.key[index]=key;
+    }
+
+
+    /**
+     * 获取当前选中书籍
+     * @return 当前选中书籍
+     */
+    public Book getBookByIndex() throws FishException {
+        if(book==null||book.size()==0){
+            FishException.throwFishException("书架中还没有书,赶紧去添加吧！");
+        }
+        if (bookIndex<0 || bookIndex>=book.size()){
+            this.bookIndex=book.size()-1;
+        }
+        return this.book.get(bookIndex);
     }
 
     public static PersistentState getInstance() {

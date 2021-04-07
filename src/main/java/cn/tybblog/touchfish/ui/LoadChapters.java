@@ -1,17 +1,19 @@
 package cn.tybblog.touchfish.ui;
 
 import cn.tybblog.touchfish.PersistentState;
-import com.intellij.openapi.Disposable;
+import cn.tybblog.touchfish.ui.dialog.FishDialog;
 import com.intellij.openapi.ui.MessageDialogBuilder;
 import com.intellij.ui.components.JBList;
-import com.intellij.ui.components.JBScrollBar;
 import com.intellij.ui.components.JBScrollPane;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class LoadChapters extends JDialog implements Disposable {
+/**
+ * @author Administrator
+ */
+public class LoadChapters extends FishDialog {
     private JPanel panel1;
     private JTextField searchName;
     private JButton searchBtn;
@@ -33,6 +35,7 @@ public class LoadChapters extends JDialog implements Disposable {
         searchName.setText("暂未开发搜索功能，敬请期待");
         chaptersJList.setListData(persistentState.getBook().get(bookIndex).getChapters().toArray());
         chaptersJList.addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
                     MessageDialogBuilder.YesNo msg = MessageDialogBuilder.yesNo("提示", "确定要切换至 "+chaptersJList.getSelectedValue()+" 吗？");
@@ -44,10 +47,6 @@ public class LoadChapters extends JDialog implements Disposable {
                 }
             }
         });
-    }
-
-    private void onCancel() {
-        dispose();
     }
     private void createUIComponents() {
         // TODO: place custom component creation code here

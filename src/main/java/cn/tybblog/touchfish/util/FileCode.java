@@ -3,6 +3,9 @@ package cn.tybblog.touchfish.util;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 
+/**
+ * @author ly
+ */
 public class FileCode {
     public static String codeString(String fileName) throws Exception {
         String charset = "GBK";
@@ -29,16 +32,19 @@ public class FileCode {
             bis.reset();
             if (!checked) {
                 while ((read = bis.read()) != -1) {
-                    if (read >= 0xF0)
+                    if (read >= 0xF0) {
                         break;
-                    if (0x80 <= read && read <= 0xBF)
+                    }
+                    if (0x80 <= read && read <= 0xBF) {
                         break;
+                    }
                     if (0xC0 <= read && read <= 0xDF) {
                         read = bis.read();
-                        if (0x80 <= read && read <= 0xBF)
+                        if (0x80 <= read && read <= 0xBF) {
                             continue;
-                        else
+                        } else {
                             break;
+                        }
                     } else if (0xE0 <= read && read <= 0xEF) {
                         read = bis.read();
                         if (0x80 <= read && read <= 0xBF) {
@@ -46,10 +52,12 @@ public class FileCode {
                             if (0x80 <= read && read <= 0xBF) {
                                 charset = "UTF-8";
                                 break;
-                            } else
+                            } else {
                                 break;
-                        } else
+                            }
+                        } else {
                             break;
+                        }
                     }
                 }
             }

@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'cn.tybblog'
-version '1.5-idea'
+version '1.6-idea'
 
 repositories {
     mavenCentral()

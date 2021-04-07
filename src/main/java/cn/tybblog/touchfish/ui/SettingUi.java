@@ -2,27 +2,23 @@ package cn.tybblog.touchfish.ui;
 
 import cn.tybblog.touchfish.PersistentState;
 import cn.tybblog.touchfish.entity.Book;
-import cn.tybblog.touchfish.entity.Chapter;
+import cn.tybblog.touchfish.exception.FishException;
+import cn.tybblog.touchfish.listener.EventListener;
 import cn.tybblog.touchfish.ui.table.JCTable;
-import cn.tybblog.touchfish.util.FileCode;
+import cn.tybblog.touchfish.util.JtableDataUtils;
+import cn.tybblog.touchfish.util.KeyMapFormatUtils;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.ui.MessageDialogBuilder;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
 import com.intellij.ui.DocumentAdapter;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.LineIterator;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * @author ly
@@ -35,7 +31,6 @@ public class SettingUi {
     private JCTable keyMap;
     private JButton selectBtn;
     private JLabel bookReading;
-    private JButton refBtn;
     private JButton addBtn;
     private TextFieldWithBrowseButton filePath;
     private JTextField urlField;
@@ -44,71 +39,75 @@ public class SettingUi {
     public SettingUi() {
         urlFieldInit();
         bookTableInit();
-        addBtn.addActionListener(e -> {
-            if (filePath.getText()==null||"".equals(filePath.getText())||!filePath.getText().substring(filePath.getText().lastIndexOf('.')).equals(".txt")){
-                MessageDialogBuilder.yesNo("提示", "请选择正确的文件(必须为txt)").show();
-                return;
-            }
-            if(persistentState.getBook()==null) {
-                persistentState.setBook(new ArrayList<>());
-            }
-            for (Book b : persistentState.getBook()) {
-                if (b.getUrl().equals(filePath.getText())) {
-                   MessageDialogBuilder.yesNo("提示", "此书已在书架中！").show();
-                   return;
-                }
-            }
-            File file = new File(filePath.getText());
-            if (file.exists()) {
-                splitFile(file);
-                addBook();
-            } else {
-                MessageDialogBuilder.yesNo("提示", "文件不存在，请选择正确的文件").show();
-            }
-        });
-
-        filePath.addBrowseFolderListener("选择书籍",null, null,new FileChooserDescriptor(true,false,false,false,false,false));
+        keyMapInit();
+        addBtnInit();
+        //文件选择器
+        filePath.addBrowseFolderListener("选择书籍", null, null, new FileChooserDescriptor(true, false, false, false, false, false));
+        //新增书籍按钮弹窗
         searchBtn.addActionListener(e -> {
             BookUi dialog = new BookUi();
-            dialog.pack();
-            dialog.setSize(300, 300);
-            int x = (Toolkit.getDefaultToolkit().getScreenSize().width - dialog.getSize().width) / 2;
-            int y = (Toolkit.getDefaultToolkit().getScreenSize().height - dialog.getSize().height) / 2;
-            dialog.setLocation(x, y);
-            dialog.setVisible(true);
+            dialog.initUI();
             dialog.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
-                    addBook();
+                    bookDataInit();
                     super.windowClosed(e);
                 }
             });
         });
+        //删除书籍按钮
         delButton.addActionListener(e -> {
+            if (persistentState.delBook(bookTable.getSelectedRow())) {
+                updBookReading();
+                bookDataInit();
+                EventListener.book=null;
+            }
+        });
+        //选中书籍按钮
+        selectBtn.addActionListener(e -> {
             int selectedRow = bookTable.getSelectedRow();
             if (selectedRow > -1) {
-                Book book = persistentState.getBook().get(selectedRow);
-                if ("自定义导入".equals(book.getAuth())) {
-                    try {
-                        FileUtils.deleteDirectory(new File(book.getUrl().substring(0,book.getUrl().lastIndexOf('\\'))+"\\temp"));
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
-                    }
-                }
-                persistentState.getBook().remove(selectedRow);
-                if (persistentState.getBookIndex()==selectedRow) {
-                    persistentState.setBookIndex(selectedRow - 1);
-                    updBookReading();
-                }
-                addBook();
+                persistentState.setBookIndex(selectedRow);
+                EventListener.book=null;
+                updBookReading();
             }
         });
-        refBtn.addActionListener(e -> {
-            int selectedRow = bookTable.getSelectedRow();
-            if (selectedRow>=0) {
-                persistentState.getBook().get(selectedRow).setChapters(null);
+        String[] key = persistentState.getKey();
+        if (key == null) {
+            key = new String[]{"Alt+←", "Alt+→", "Ctrl+1", "Ctrl+2", "Shift+↑"};
+            persistentState.setKey(key);
+        }
+        updBookReading();
+        bookDataInit();
+        updKeyMap();
+    }
+
+    /**
+     * 导入按钮初始化
+     */
+    private void addBtnInit(){
+        addBtn.addActionListener(e -> {
+            if (filePath.getText() == null || "".equals(filePath.getText()) || !filePath.getText().substring(filePath.getText().lastIndexOf('.')).equals(".txt")) {
+                MessageDialogBuilder.yesNo("提示", "请选择正确的文件(必须为txt)").show();
+                return;
+            }
+            File file = new File(filePath.getText());
+            if (file.exists()) {
+                String fileName = file.getName().substring(0, file.getName().lastIndexOf('.'));
+                Book book = new Book(filePath.getText(), fileName, "自定义导入");
+                persistentState.addBook(book);
+                bookDataInit();
+            } else {
+                MessageDialogBuilder.yesNo("提示", "文件不存在，请选择正确的文件").show();
             }
         });
+    }
+
+    /**
+     * 热键表格初始化
+     */
+    private void keyMapInit(){
+        //鼠标监听事件
         keyMap.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -117,15 +116,17 @@ public class SettingUi {
                 if (row == -1) {
                     return;
                 }
-                if(e.getButton()>3){
-                    String key= "鼠标侧键"+(e.getButton()-3);
-                    String[] key1 = persistentState.getKey();
-                    key1[row]=key;
+                if (e.getButton() > 3) {
+                    String key = KeyMapFormatUtils.keyMapFormat(e);
+                    if ("".equals(key)) {
+                        return;
+                    }
                     keyMap.setValueAt(key, row, 1);
-                    persistentState.setKey(key1);
+                    persistentState.setKeyMap(key,row);
                 }
             }
         });
+        //键盘监听事件
         keyMap.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -133,130 +134,51 @@ public class SettingUi {
                 if (row == -1) {
                     return;
                 }
-                String modifiersText = e.getKeyModifiersText(e.getModifiers());
-                String key = "";
-                if (modifiersText != null && !"".equals(modifiersText)) {
-                    key += modifiersText + "+";
+                String key = KeyMapFormatUtils.keyMapFormat(e);
+                if ("".equals(key)) {
+                    return;
                 }
-                if (key.indexOf(KeyEvent.getKeyText(e.getKeyCode()))==-1) {
-                    key += KeyEvent.getKeyText(e.getKeyCode());
-                } else {
-                    key=key.substring(0,key.length()-1);
-                }
-                if (key.indexOf("箭头")>-1) {
-                    key=key.replaceAll("向上箭头","↑")
-                            .replaceAll("向下箭头","↓")
-                            .replaceAll("向右箭头","→")
-                            .replaceAll("向左箭头","←");
-                }
-                String[] key1 = persistentState.getKey();
-                key1[row] = key;
+                persistentState.setKeyMap(key,row);
                 keyMap.setValueAt(key, row, 1);
-                persistentState.setKey(key1);
                 super.keyPressed(e);
             }
         });
-        selectBtn.addActionListener(e -> {
-            int selectedRow = bookTable.getSelectedRow();
-            if (selectedRow > -1) {
-                persistentState.setBookIndex(selectedRow);
-                updBookReading();
-            }
-        });
-        String[] key = persistentState.getKey();
-        if (key == null) {
-            key = new String[]{"Alt+←", "Alt+→", "Ctrl+1", "Ctrl+2", "Shift+↑", "Shift+↓"};
-            persistentState.setKey(key);
-        }
-        updBookReading();
-        addBook();
-        updKeyMap();
     }
 
-    private void addBook() {
-        List<Book> books = persistentState.getBook();
-        if (books == null) {
-            return;
-        }
-        Vector bookNames = new Vector();
-        Vector auths = new Vector();
-        for (Book book : books) {
-            bookNames.add(book.getBookName());
-            auths.add(book.getAuth());
-        }
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("书名", bookNames);
-        model.addColumn("作者", auths);
-        bookTable.setModel(model);
-    }
-
+    /**
+     * 更新热键
+     */
     private void updKeyMap() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("name", new String[]{"上一行热键", "下一行热键", "上一章热键", "下一章热键", "显示热键", "隐藏热键"});
+        model.addColumn("name", new String[]{"上一行热键", "下一行热键", "上一章热键", "下一章热键", "显示/隐藏热键"});
         model.addColumn("key", persistentState.getKey());
         keyMap.setModel(model);
     }
 
-    private void updBookReading(){
-        if (persistentState.getBook()==null||persistentState.getBook().size()==0) {
-            bookReading.setText("书架中还没有书,赶紧去添加");
+    /**
+     * 正在阅读的书籍
+     */
+    private void updBookReading() {
+        List<Book> books = persistentState.getBook();
+        if (books==null||books.size()==0){
+            bookReading.setText("书架中还没有书,赶紧去添加吧！");
             return;
         }
-        if(persistentState.getBook().size()>=persistentState.getBookIndex()) {
-            persistentState.setBookIndex(persistentState.getBook().size()-1);
+        Book book = null;
+        try {
+            book = persistentState.getBookByIndex();
+        } catch (FishException e) {
+            MessageDialogBuilder.yesNo("提示", e.getMessage()).show();
+            return;
         }
-        Book book = persistentState.getBook().get(persistentState.getBookIndex());
         String text = "<html>当前阅读书籍：" + book.getBookName();
-        if (book.getChapters()!=null&&book.getChapters().size()>0) {
-            text+="正在阅读：" + book.getChapters().get(book.getIndex()).getTitle()+"</html>";
+        if (book.getChapters() != null && book.getChapters().size() > 0) {
+            try {
+                text += "正在阅读：" + book.getChapterByIndex().getTitle() + "</html>";
+            } catch (FishException e) {
+            }
         }
         bookReading.setText(text);
-    }
-
-    public static void splitFile(File file){
-        String fileName = file.getName().substring(0,file.getName().lastIndexOf('.'));
-        Book book = new Book(file.getPath(),fileName,"自定义导入");
-        List<Chapter> chapters=new ArrayList<>();
-        LineIterator it = null;
-        try {
-            it = FileUtils.lineIterator(file, FileCode.codeString(file.getPath()));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;
-        }
-        int j=0;
-        while (it.hasNext()) {
-            String strs="";
-            for (int i = 0; i < 99; i++) {
-                if (it.hasNext()) {
-                    strs+=it.nextLine()+"\n";
-                } else {
-                    break;
-                }
-            }
-            String filePath = file.getPath().substring(0,file.getPath().lastIndexOf('\\')) + "\\temp\\" + fileName + j + ".txt";
-            try {
-                FileUtils.write(new File(filePath),strs,"UTF-8");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Chapter chapter=new Chapter();
-            chapter.setUrl(filePath);
-            chapter.setTitle("");
-            chapter.setRow(-1);
-            chapters.add(chapter);
-            j++;
-        }
-        book.setChapters(chapters);
-        List<Book> books = persistentState.getBook();
-        if (books == null) books=new ArrayList<>();
-        books.add(book);
-        persistentState.setBook(books);
-        try {
-            it.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -265,15 +187,15 @@ public class SettingUi {
     private void createUIComponents() {
         bookTable = new JCTable();
         keyMap = new JCTable();
-        filePath=new TextFieldWithBrowseButton();
-        urlField=new JTextField();
+        filePath = new TextFieldWithBrowseButton();
+        urlField = new JTextField();
     }
 
     /**
      * 数据源文本框初始化
      */
-    private void urlFieldInit(){
-        if (persistentState.getUrl()==null) {
+    private void urlFieldInit() {
+        if (persistentState.getUrl() == null) {
             persistentState.setUrl("http://www.xbiquge.la");
         }
         urlField.setText(persistentState.getUrl());
@@ -288,24 +210,19 @@ public class SettingUi {
     /**
      * 书架数据初始化
      */
-    private void bookTableInit(){
-        addBook();
+    private void bookTableInit() {
+        bookDataInit();
         bookTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
                     int row = bookTable.getSelectedRow();
-                    if ("自定义导入".equals(bookTable.getValueAt(row,1))){
+                    if (Book.FILE_AUTH.equals(bookTable.getValueAt(row, 1))) {
                         MessageDialogBuilder.yesNo("提示", "此书为自定义导入暂不支持修改章节").show();
                         return;
                     }
-                    LoadChapters dialog=new LoadChapters(row);
-                    dialog.pack();
-                    dialog.setSize(300, 300);
-                    int x = (Toolkit.getDefaultToolkit().getScreenSize().width - dialog.getSize().width) / 2;
-                    int y = (Toolkit.getDefaultToolkit().getScreenSize().height - dialog.getSize().height) / 2;
-                    dialog.setLocation(x, y);
-                    dialog.setVisible(true);
+                    LoadChapters dialog = new LoadChapters(row);
+                    dialog.initUI();
                     dialog.addWindowListener(new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
@@ -316,5 +233,16 @@ public class SettingUi {
                 }
             }
         });
+    }
+
+    /**
+     * 书本数据初始化
+     */
+    private void bookDataInit() {
+        List<Book> books = persistentState.getBook();
+        if (books == null) {
+            return;
+        }
+        bookTable.setModel(JtableDataUtils.bookToTableModel(books));
     }
 }
