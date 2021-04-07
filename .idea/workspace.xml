@@ -25,39 +25,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d18ac182-4333-4e29-b6da-6920f6ffd7f0" name="Default Changelist" comment="V1.6.1">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/ideaIC_2020_2_2_sources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/exception/FishException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/dialog/FishDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/ChapterCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/ConsoleUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/FileSplitUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/JtableDataUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/KeyMapFormatUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="d18ac182-4333-4e29-b6da-6920f6ffd7f0" name="Default Changelist" comment="V1.6">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/PersistentState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/PersistentState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/entity/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/entity/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/entity/Chapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/entity/Chapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/listener/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/listener/EventListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/touchfishStrat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/TouchfishStrat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/BookUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/BookUi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/LoadChapters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/LoadChapters.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/SettingUi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/field/SearchTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/ui/field/SearchTextField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/FileCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/FileCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/HttpCallBack.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/HttpRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/NetworkUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/NetworkUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/impl/ReadBookImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tybblog/touchfish/util/impl/ReadFileBookImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -358,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616117444836</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="V1.6">
+      <created>1617787121819</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1617787121819</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -385,7 +363,8 @@
     <MESSAGE value="V1.3" />
     <MESSAGE value="V1.5" />
     <MESSAGE value="V1.6.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.6.1" />
+    <MESSAGE value="V1.6" />
+    <option name="LAST_COMMIT_MESSAGE" value="V1.6" />
   </component>
   <component name="WindowStateProjectService">
     <state x="309" y="42" key="#Inspections" timestamp="1617257748364">
@@ -428,38 +407,38 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="568" y="130" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1617528234897" />
-    <state width="1323" height="160" key="GridCell.Tab.0.bottom" timestamp="1617786786667">
+    <state width="700" height="160" key="GridCell.Tab.0.bottom" timestamp="1617787988417">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="160" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1617786786667" />
-    <state width="1323" height="160" key="GridCell.Tab.0.center" timestamp="1617786786667">
+    <state width="700" height="160" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1617787988417" />
+    <state width="700" height="160" key="GridCell.Tab.0.center" timestamp="1617787988416">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="160" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1617786786667" />
-    <state width="1323" height="160" key="GridCell.Tab.0.left" timestamp="1617786786667">
+    <state width="700" height="160" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1617787988416" />
+    <state width="700" height="160" key="GridCell.Tab.0.left" timestamp="1617787988416">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="160" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1617786786667" />
-    <state width="1323" height="160" key="GridCell.Tab.0.right" timestamp="1617786786667">
+    <state width="700" height="160" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1617787988416" />
+    <state width="700" height="160" key="GridCell.Tab.0.right" timestamp="1617787988416">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="160" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1617786786667" />
-    <state width="1323" height="217" key="GridCell.Tab.1.bottom" timestamp="1617786733139">
+    <state width="700" height="160" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1617787988416" />
+    <state width="1323" height="217" key="GridCell.Tab.1.bottom" timestamp="1617787988411">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="217" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1617786733139" />
-    <state width="1323" height="217" key="GridCell.Tab.1.center" timestamp="1617786733139">
+    <state width="1323" height="217" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1617787988411" />
+    <state width="1323" height="217" key="GridCell.Tab.1.center" timestamp="1617787988410">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="217" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1617786733139" />
-    <state width="1323" height="217" key="GridCell.Tab.1.left" timestamp="1617786733139">
+    <state width="1323" height="217" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1617787988410" />
+    <state width="1323" height="217" key="GridCell.Tab.1.left" timestamp="1617787988410">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="217" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1617786733139" />
-    <state width="1323" height="217" key="GridCell.Tab.1.right" timestamp="1617786733139">
+    <state width="1323" height="217" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1617787988410" />
+    <state width="1323" height="217" key="GridCell.Tab.1.right" timestamp="1617787988411">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="217" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1617786733139" />
+    <state width="1323" height="217" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1617787988411" />
     <state x="129" y="55" key="MergeDialog" timestamp="1609821992973">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -476,10 +455,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="529" y="276" key="VCS.ChangelistChooser/0.0.1366.728@0.0.1366.728" timestamp="1616051030773" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1616118591937">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1617787205311">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616118591937" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1617787205311" />
     <state width="686" height="372" key="XDebugger.FullValuePopup" timestamp="1616085763764">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

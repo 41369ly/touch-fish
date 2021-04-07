@@ -74,7 +74,7 @@ public class SettingUi {
         });
         String[] key = persistentState.getKey();
         if (key == null) {
-            key = new String[]{"Alt+←", "Alt+→", "Ctrl+1", "Ctrl+2", "Shift+↑"};
+            key = new String[]{"Alt+←", "Alt+→", "Ctrl+1", "Ctrl+2", "Shift+↑","Shift+↓"};
             persistentState.setKey(key);
         }
         updBookReading();
@@ -150,7 +150,7 @@ public class SettingUi {
      */
     private void updKeyMap() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("name", new String[]{"上一行热键", "下一行热键", "上一章热键", "下一章热键", "显示/隐藏热键"});
+        model.addColumn("name", new String[]{"上一行热键", "下一行热键", "上一章热键", "下一章热键", "显示/隐藏热键","启动/停止自动翻页"});
         model.addColumn("key", persistentState.getKey());
         keyMap.setModel(model);
     }
