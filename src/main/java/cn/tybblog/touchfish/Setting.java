@@ -40,7 +40,7 @@ public class Setting implements SearchableConfigurable {
     @Nls
     @Override
     public String getDisplayName() {
-        return "thief-Book-config";
+        return "touch-fish-config";
     }
 
     @Nullable
@@ -71,11 +71,6 @@ public class Setting implements SearchableConfigurable {
 
     @Override
     public void reset() {
-//        settingUi.bookPathText.setText("");
-//        settingUi.showFlag.setSelected(false);
-//        settingUi.fontSize.setSelectedItem("5");
-//        settingUi.before.setText("");
-//        settingUi.next.setText("");
     }
 
     @Override

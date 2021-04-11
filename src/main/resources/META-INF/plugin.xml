@@ -20,6 +20,8 @@
         <applicationService serviceImplementation="cn.tybblog.touchfish.PersistentState"/>
 
         <postStartupActivity implementation="cn.tybblog.touchfish.TouchfishStrat" order="first"/>
+
+        <toolWindow secondary="true" factoryClass="cn.tybblog.touchfish.ui.FishConsoleWindow" id="fishConsole" canCloseContents="false" anchor="bottom" />
     </extensions>
 
 </idea-plugin>

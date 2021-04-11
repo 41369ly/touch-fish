@@ -137,4 +137,23 @@ public class Book {
         index--;
         return loadChapter(callback,BASE_METHOD_PRE);
     }
+
+    public String nextIndex() throws FishException {
+        if (index<chapters.size()) {
+            index++;
+        } else {
+            return "已经是最后一章了";
+        }
+        getChapterByIndex().setRow(-1);
+        return getChapterByIndex().getTitle();
+    }
+
+    public String preIndex() throws FishException {
+        if(index<0){
+            return "已经是第一章了";
+        }
+        index--;
+        getChapterByIndex().setRow(-1);
+        return getChapterByIndex().getTitle();
+    }
 }

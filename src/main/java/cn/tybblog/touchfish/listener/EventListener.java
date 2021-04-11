@@ -13,23 +13,37 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.MessageDialogBuilder;
 import com.intellij.openapi.wm.StatusBar;
 import com.intellij.openapi.wm.WindowManager;
+import com.intellij.openapi.wm.impl.IdeFrameImpl;
 import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
+import sun.awt.AWTAccessor;
 
 import java.awt.*;
 import java.awt.event.AWTEventListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class EventListener implements KeyEventPostProcessor, AWTEventListener, ChapterCallback {
     private PersistentState persistentState = PersistentState.getInstance();
+    /** 控制台 */
     private StatusBar statusBar;
+    /** 当前书籍 */
     public static Book book;
+    /** 老板键 */
     private boolean flag = false;
+    /** 控制台长度分出的缓存行 */
     private List<String> cacheRow;
+    /** 缓存行索引 */
     private int cacheIndex = -1;
+    /** 当前章节文章 */
     private List<String> bookText;
+    /** 加载中 */
     public static boolean loading=false;
+    /** 定时执行 */
+    private Timer timer;
 
     public static String LOADING_TEXT = "加载中...";
 
@@ -45,6 +59,12 @@ public class EventListener implements KeyEventPostProcessor, AWTEventListener, C
         String key = KeyMapFormatUtils.keyMapFormat(e);
         if ("".equals(key)) {
             return false;
+        }
+
+        Component source = AWTAccessor.getKeyEventAccessor().getOriginalSource(e);
+        if (source instanceof IdeFrameImpl){
+            statusBar = ((IdeFrameImpl)source).getStatusBar();
+            ConsoleUtils.setStatusBar(statusBar);
         }
         try {
             doRead(key);
@@ -64,6 +84,11 @@ public class EventListener implements KeyEventPostProcessor, AWTEventListener, C
             if (e.getButton()<4) {
                 return;
             }
+            Object source = event.getSource();
+            if (source instanceof IdeFrameImpl){
+                statusBar = ((IdeFrameImpl)source).getStatusBar();
+                ConsoleUtils.setStatusBar(statusBar);
+            }
             try {
                 doRead("鼠标侧键"+(e.getButton()-3));
             } catch (FishException fishException) {
@@ -81,11 +106,7 @@ public class EventListener implements KeyEventPostProcessor, AWTEventListener, C
         if (loading){
             return;
         }
-        if (book==null){
-            initBook();
-            return;
-        }
-        if (stateKey[4].equals(key)) {
+        if (stateKey[5].equals(key)) {
             flag=!flag;
             if (flag) {
                 ConsoleUtils.info("");
@@ -95,9 +116,15 @@ public class EventListener implements KeyEventPostProcessor, AWTEventListener, C
         if (flag) {
             return;
         }
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             if (!stateKey[i].equals(key)) {
                 continue;
+            }
+            if (book==null){
+                initBook();
+                cacheIndex=-1;
+                nextCacheRow();
+                return;
             }
             switch (i) {
                 case 0:
@@ -107,10 +134,29 @@ public class EventListener implements KeyEventPostProcessor, AWTEventListener, C
                     nextCacheRow();
                     break;
                 case 2:
-//                    preChapter();
+                    preChapter();
                     break;
                 case 3:
-//                    nextChapter();
+                    nextChapter();
+                    break;
+                case 4:
+                    if (timer==null){
+                        timer=new Timer();
+                        timer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                try {
+                                    nextCacheRow();
+                                } catch (FishException e) {
+                                    ConsoleUtils.info(e.getMessage());
+                                    EventListener.loading=false;
+                                }
+                            }
+                        },0,persistentState.getNextInfoTime()*1000);
+                    } else {
+                        timer.cancel();
+                        timer=null;
+                    }
                     break;
                 default:
             }
@@ -118,6 +164,10 @@ public class EventListener implements KeyEventPostProcessor, AWTEventListener, C
         }
     }
 
+    /**
+     * 初始化书本
+     * @throws FishException
+     */
     public void initBook() throws FishException {
         book=persistentState.getBookByIndex();
         bookText=book.loadChapter(this,Book.BASE_METHOD_NEXT);
@@ -127,8 +177,30 @@ public class EventListener implements KeyEventPostProcessor, AWTEventListener, C
         } else {
             splitBookText(chapter.getRow());
         }
-        cacheIndex=-1;
-        nextCacheRow();
+    }
+
+    /**
+     * 上一章
+     */
+    private void preChapter(){
+        try {
+            ConsoleUtils.info(book.preIndex());
+            initBook();
+        } catch (FishException e) {
+            ConsoleUtils.info(e.getMessage());
+        }
+    }
+
+    /**
+     * 下一章
+     */
+    private void nextChapter(){
+        try {
+            ConsoleUtils.info(book.nextIndex());
+            initBook();
+        } catch (FishException e) {
+            ConsoleUtils.info(e.getMessage());
+        }
     }
 
     /**
@@ -202,6 +274,10 @@ public class EventListener implements KeyEventPostProcessor, AWTEventListener, C
      * 根据控制台长度分割字符串
      */
     private void splitBookText(int row){
+        if (persistentState.getIsConsole()){
+            cacheRow= Arrays.asList(bookText.get(row));
+            return;
+        }
         cacheRow = Lists.newArrayList(Splitter.fixedLength(getConsoleLen()).split(bookText.get(row)));
     }
 

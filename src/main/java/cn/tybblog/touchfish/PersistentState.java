@@ -40,13 +40,33 @@ public class PersistentState implements PersistentStateComponent<PersistentState
     private String url;
     /** 是否使用控制台 */
     private boolean isConsole;
+    /** 自动翻页 */
+    private Integer nextInfoTime;
+    /** 字体大小 */
+    private String fontStyle;
+
+    public String getFontStyle() {
+        return fontStyle;
+    }
+
+    public void setFontStyle(String fontStyle) {
+        this.fontStyle = fontStyle;
+    }
+
+    public Integer getNextInfoTime() {
+        return nextInfoTime;
+    }
+
+    public void setNextInfoTime(Integer nextInfoTime) {
+        this.nextInfoTime = nextInfoTime;
+    }
 
     public boolean getIsConsole() {
         return isConsole;
     }
 
-    public void setConsole(boolean console) {
-        isConsole = console;
+    public void setIsConsole(boolean console) {
+        this.isConsole = console;
     }
 
     public String getUrl() {

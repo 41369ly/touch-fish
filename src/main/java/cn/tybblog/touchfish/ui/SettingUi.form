@@ -9,17 +9,19 @@
     <rowspec value="center:min(d;25px):noGrow"/>
     <rowspec value="top:17dlu:noGrow"/>
     <rowspec value="center:29px:noGrow"/>
-    <rowspec value="center:300px:noGrow"/>
+    <rowspec value="center:28px:noGrow"/>
+    <rowspec value="center:18px:grow"/>
+    <rowspec value="center:78px:noGrow"/>
     <colspec value="fill:131px:noGrow"/>
     <colspec value="left:34dlu:noGrow"/>
     <colspec value="fill:69px:noGrow"/>
     <colspec value="fill:64px:noGrow"/>
     <colspec value="fill:25px:noGrow"/>
-    <colspec value="fill:58px:noGrow"/>
+    <colspec value="fill:67px:noGrow"/>
     <colspec value="left:68dlu:noGrow"/>
     <colspec value="fill:98px:noGrow"/>
     <constraints>
-      <xy x="33" y="24" width="655" height="615"/>
+      <xy x="33" y="24" width="658" height="497"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -35,7 +37,7 @@
       </component>
       <component id="fb1e4" class="cn.tybblog.touchfish.ui.table.JCTable" binding="bookTable">
         <constraints>
-          <grid row="1" column="0" row-span="8" col-span="4" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="1" column="0" row-span="10" col-span="4" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
@@ -147,7 +149,39 @@
           <text value="自动翻页"/>
         </properties>
       </component>
-      <component id="25099" class="javax.swing.JTextField" custom-create="true">
+      <component id="681b9" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="7" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text value="秒"/>
+        </properties>
+      </component>
+      <component id="e5fd4" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <text value="控制台显示"/>
+        </properties>
+      </component>
+      <component id="fe700" class="javax.swing.JComboBox" binding="isConsoleCheck">
+        <constraints>
+          <grid row="8" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <enabled value="true"/>
+          <model>
+            <item value="是"/>
+            <item value="否"/>
+          </model>
+        </properties>
+      </component>
+      <component id="f1b3b" class="javax.swing.JTextField" binding="nextInfoTime" custom-create="true">
         <constraints>
           <grid row="7" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -158,13 +192,24 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="681b9" class="javax.swing.JLabel">
+      <component id="a9675" class="javax.swing.JTextArea" binding="fontStyleTextArea">
         <constraints>
-          <grid row="7" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <forms/>
+          <grid row="9" column="6" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties>
-          <text value="秒"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="8fdad" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="9" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <text value="&lt;html&gt;控制台字体样式&lt;/html&gt;"/>
         </properties>
       </component>
     </children>

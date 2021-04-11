@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 import java.io.File;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * @author ly
@@ -34,13 +35,32 @@ public class SettingUi {
     private JButton addBtn;
     private TextFieldWithBrowseButton filePath;
     private JTextField urlField;
+    private JTextField nextInfoTime;
+    private JComboBox isConsoleCheck;
+    private JTextArea fontStyleTextArea;
     private static PersistentState persistentState = PersistentState.getInstance();
+
+    private static Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
 
     public SettingUi() {
         urlFieldInit();
         bookTableInit();
         keyMapInit();
         addBtnInit();
+        //控制台字体样式
+        fontStyleTextArea.getDocument().addDocumentListener(new DocumentAdapter() {
+            @Override
+            protected void textChanged(@NotNull DocumentEvent e) {
+                persistentState.setFontStyle(fontStyleTextArea.getText());
+            }
+        });
+        if (persistentState.getFontStyle()==null){
+            persistentState.setFontStyle("{font-size: 10px;}");
+        }
+        fontStyleTextArea.setText(persistentState.getFontStyle());
+        //控制台下拉框
+        isConsoleCheck.setSelectedIndex(persistentState.getIsConsole()?0:1);
+        isConsoleCheck.addItemListener(e -> persistentState.setIsConsole("是".equals(e.getItem())));
         //文件选择器
         filePath.addBrowseFolderListener("选择书籍", null, null, new FileChooserDescriptor(true, false, false, false, false, false));
         //新增书籍按钮弹窗
@@ -72,6 +92,22 @@ public class SettingUi {
                 updBookReading();
             }
         });
+        //定时器时间设置
+        nextInfoTime.getDocument().addDocumentListener(new DocumentAdapter() {
+            @Override
+            protected void textChanged(@NotNull DocumentEvent e) {
+                if (pattern.matcher(nextInfoTime.getText()).matches()) {
+                    persistentState.setNextInfoTime(Integer.valueOf(nextInfoTime.getText()));
+                    updBookReading();
+                } else {
+                    bookReading.setText("请输入正确的数字");
+                }
+            }
+        });
+        if (persistentState.getNextInfoTime()==null||persistentState.getNextInfoTime()==0){
+            persistentState.setNextInfoTime(10);
+        }
+        nextInfoTime.setText(persistentState.getNextInfoTime().toString());
         String[] key = persistentState.getKey();
         if (key == null) {
             key = new String[]{"Alt+←", "Alt+→", "Ctrl+1", "Ctrl+2", "Shift+↑","Shift+↓"};
@@ -95,8 +131,12 @@ public class SettingUi {
             if (file.exists()) {
                 String fileName = file.getName().substring(0, file.getName().lastIndexOf('.'));
                 Book book = new Book(filePath.getText(), fileName, "自定义导入");
-                persistentState.addBook(book);
-                bookDataInit();
+                bookReading.setText("正在解析章节，导入中...");
+                new Thread(() -> {
+                    persistentState.addBook(book);
+                    updBookReading();
+                    bookDataInit();
+                }).start();
             } else {
                 MessageDialogBuilder.yesNo("提示", "文件不存在，请选择正确的文件").show();
             }
@@ -150,7 +190,7 @@ public class SettingUi {
      */
     private void updKeyMap() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("name", new String[]{"上一行热键", "下一行热键", "上一章热键", "下一章热键", "显示/隐藏热键","启动/停止自动翻页"});
+        model.addColumn("name", new String[]{"上一行热键", "下一行热键", "上一章热键", "下一章热键", "启动/停止自动翻页","显示/隐藏热键"});
         model.addColumn("key", persistentState.getKey());
         keyMap.setModel(model);
     }
@@ -189,6 +229,7 @@ public class SettingUi {
         keyMap = new JCTable();
         filePath = new TextFieldWithBrowseButton();
         urlField = new JTextField();
+        nextInfoTime = new JTextField();
     }
 
     /**
@@ -217,10 +258,6 @@ public class SettingUi {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
                     int row = bookTable.getSelectedRow();
-                    if (Book.FILE_AUTH.equals(bookTable.getValueAt(row, 1))) {
-                        MessageDialogBuilder.yesNo("提示", "此书为自定义导入暂不支持修改章节").show();
-                        return;
-                    }
                     LoadChapters dialog = new LoadChapters(row);
                     dialog.initUI();
                     dialog.addWindowListener(new WindowAdapter() {
