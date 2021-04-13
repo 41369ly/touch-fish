@@ -9,6 +9,8 @@
 #### idea插件 摸鱼神器 在线阅读无需下载 位置隐蔽难以发现
 
 ------------
+## 更新公告
+升级2.0版本后需将之前添加的书籍进行删除后重新添加
 
 ## 目前功能
 1. 内置老板键一键隐藏
@@ -19,6 +21,8 @@
 1. 书架功能
 1. txt导入
 1. 切换章节
+1. 智能识别本地文件章节
+1. 自定义字体、字体大小
 
 ## 效果图
 ![切换章节](https://i.postimg.cc/tJ01hf4y/image.png "切换章节")
@@ -28,9 +32,9 @@
 ------------
 
 ## 下载地址
-[点击下载idea版](https://github.com/41369ly/touch-fish/releases/download/V1.5/touch-fish-1.5-idea.zip "idea版")
+[点击下载idea版](https://github.com/41369ly/touch-fish/releases/download/V2.0/touch-fish-2.0-idea.zip "idea版")
 
-[点击下载webstorm版](https://github.com/41369ly/touch-fish/releases/download/V1.5/touch-fish-1.5-webstorm.zip "webstorm版")
+[点击下载webstorm版](https://github.com/41369ly/touch-fish/releases/download/V2.0/touch-fish-2.0-webstorm.zip "webstorm版")
 ## 使用教程
 1).到release中下载压缩包;
 
@@ -42,10 +46,7 @@
 
 5).愉快的摸鱼吧！！！！
 
-## 当前问题
-因版本问题可能会造成热键无效重置热键即可
-
-## 更新日记
+## 更新日志
 2020-10-19 V1.1
 
    1. 向下兼容 解决2020.2以下版本新增书籍点不开问题
@@ -72,4 +73,17 @@
 2021-01-02 V1.5
 
    1. 修复已知bug
+   
+2021-04-13 V2.0
+
+   1. 新增本地文件自动识别章节
+   2. 新增本地文件修改章节
+   3. 新增控制台显示（可切换字体、字体大小）
+   4. 新增控制台字体样式（仅支持css）
+   5. 新增加载中、网络连接超时等提示
+   6. 新增自动换行功能
+   7. 新增可切换数据源功能
+   8. 新增热键鼠标侧键监听功能
+   9. 修复换行问题
+   10. 修复双开跳行问题
  ---------
