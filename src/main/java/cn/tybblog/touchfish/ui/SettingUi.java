@@ -96,7 +96,7 @@ public class SettingUi {
         nextInfoTime.getDocument().addDocumentListener(new DocumentAdapter() {
             @Override
             protected void textChanged(@NotNull DocumentEvent e) {
-                if (pattern.matcher(nextInfoTime.getText()).matches()) {
+                if (!"".equals(nextInfoTime.getText())&&pattern.matcher(nextInfoTime.getText()).matches()) {
                     persistentState.setNextInfoTime(Integer.valueOf(nextInfoTime.getText()));
                     updBookReading();
                 } else {
