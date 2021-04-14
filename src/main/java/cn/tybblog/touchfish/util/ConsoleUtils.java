@@ -40,7 +40,7 @@ public class ConsoleUtils {
             StringBuilder html =new StringBuilder();
             html.append("<html><head><style type=\"text/css\">body");
             html.append(persistentState.getFontStyle()==null?"{font-size: 10px;}":persistentState.getFontStyle());
-            html.append("</head></style><body>");
+            html.append("</style></head><body>");
             html.append(str);
             html.append("</body></html>");
             label.setText(html.toString());

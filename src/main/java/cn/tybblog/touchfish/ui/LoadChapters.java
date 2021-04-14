@@ -40,7 +40,7 @@ public class LoadChapters extends FishDialog {
                 if (e.getClickCount() == 2) {
                     MessageDialogBuilder.YesNo msg = MessageDialogBuilder.yesNo("提示", "确定要切换至 "+chaptersJList.getSelectedValue()+" 吗？");
                     if(msg.isYes()) {
-                        persistentState.getBook().get(bookIndex).setIndex(chaptersJList.getSelectedIndex());
+                        persistentState.getBook().get(bookIndex).setIndex(chaptersJList.getSelectedIndex()-1);
                         onCancel();
                     }
 

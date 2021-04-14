@@ -80,6 +80,9 @@ public class Book {
         if (chapters==null||chapters.size()==0){
             FishException.throwFishException("章节为空");
         }
+        if(index>=chapters.size()){
+            index=chapters.size()-1;
+        }
         return chapters.get(index<0?0:index);
     }
 
@@ -94,7 +97,7 @@ public class Book {
         if (chapter==null){
             FishException.throwFishException("章节为空，请重新添加");
         }
-        if (!auth.equals(FILE_AUTH)&&index>=chapters.size()){
+        if (!auth.equals(FILE_AUTH)&&index>=chapters.size()-1){
             //网络书籍，获取最新章节，可能正在更新
             chapters=NetworkUtil.getChapter(url);
             chapter = getChapterByIndex();
