@@ -44,6 +44,8 @@ public class PersistentState implements PersistentStateComponent<PersistentState
     private Integer nextInfoTime;
     /** 字体大小 */
     private String fontStyle;
+    /** 章节的正则匹配 */
+    private String regexpStr;
 
     public String getFontStyle() {
         return fontStyle;
@@ -190,4 +192,11 @@ public class PersistentState implements PersistentStateComponent<PersistentState
         XmlSerializerUtil.copyBean(state, this);
     }
 
+    public String getRegexpStr() {
+        return regexpStr;
+    }
+
+    public void setRegexpStr(String regexpStr) {
+        this.regexpStr = regexpStr;
+    }
 }

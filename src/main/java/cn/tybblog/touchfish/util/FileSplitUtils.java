@@ -1,5 +1,6 @@
 package cn.tybblog.touchfish.util;
 
+import cn.tybblog.touchfish.PersistentState;
 import cn.tybblog.touchfish.entity.Book;
 import cn.tybblog.touchfish.entity.Chapter;
 import org.apache.commons.io.FileUtils;
@@ -16,7 +17,7 @@ import java.util.regex.Pattern;
 public class FileSplitUtils {
 
     /** 章节正则 */
-    private static Pattern p = Pattern.compile("(^\\s*第)(.{1,9})[章节卷集部篇回](\\s{1})(.*)($\\s*)");
+//    private static Pattern p = Pattern.compile("(^\\s*第)(.{1,9})[章节卷集部篇回](\\s{1})(.*)($\\s*)");
     /** 熔断行数 */
     private static int row = 200;
     /** 文件读取器 */
@@ -36,7 +37,11 @@ public class FileSplitUtils {
      */
     public static Book split(Book book) {
         File srcFile = new File(book.getUrl());
-        String outputDir = srcFile.getPath().substring(0, srcFile.getPath().lastIndexOf('\\'))+"\\temp\\";
+        int indexOf = srcFile.getPath().lastIndexOf('\\');
+        if(indexOf == -1){
+            indexOf = srcFile.getPath().lastIndexOf('/');
+        }
+        String outputDir = srcFile.getPath().substring(0, indexOf)+"\\temp\\";
         File outputFile = new File(outputDir);
         if (!outputFile.exists()) {
             if (!outputFile.mkdirs()) {
@@ -73,8 +78,11 @@ public class FileSplitUtils {
      * @return 章节标题
      */
     private static boolean getChapterTitle(){
+        PersistentState pstate = PersistentState.getInstance();
+        String match = pstate.getRegexpStr();
+        Pattern pattern = Pattern.compile(match);
         String line = readline();
-        Matcher matcher = p.matcher(line);
+        Matcher matcher = pattern.matcher(line);
         if (matcher.find()){
             cacheTitle = matcher.group();
             return true;

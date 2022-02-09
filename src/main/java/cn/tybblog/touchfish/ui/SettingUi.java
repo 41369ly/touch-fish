@@ -38,6 +38,7 @@ public class SettingUi {
     private JTextField nextInfoTime;
     private JComboBox isConsoleCheck;
     private JTextArea fontStyleTextArea;
+    private JTextField regexpStr;
     private static PersistentState persistentState = PersistentState.getInstance();
 
     private static Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
@@ -116,6 +117,31 @@ public class SettingUi {
         updBookReading();
         bookDataInit();
         updKeyMap();
+        // 章节名匹配输入框
+        regexpStrInput();
+    }
+
+    /**
+     * 章节名正则匹配输入框
+     * @author      wyj
+     * @date        2021/12/7 17:57
+     */
+    private void regexpStrInput() {
+        //定时器时间设置
+        regexpStr.getDocument().addDocumentListener(new DocumentAdapter() {
+            @Override
+            protected void textChanged(@NotNull DocumentEvent e) {
+                if (!"".equals(regexpStr.getText())) {
+                    persistentState.setRegexpStr(regexpStr.getText());
+                } else {
+                    persistentState.setRegexpStr("(^\\s*第)(.{1,9})[章节卷集部篇回](\\s{1})(.*)($\\s*)");
+                }
+            }
+        });
+        if (persistentState.getRegexpStr()==null||"".equals(persistentState.getRegexpStr())){
+            persistentState.setRegexpStr("(^\\s*第)(.{1,9})[章节卷集部篇回](\\s{1})(.*)($\\s*)");
+        }
+        regexpStr.setText(persistentState.getRegexpStr());
     }
 
     /**
