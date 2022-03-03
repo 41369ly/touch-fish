@@ -32,7 +32,7 @@
 ------------
 
 ## 下载地址
-[点击下载](https://github.com/41369ly/touch-fish/releases/download/V2.3/touch-fish-2.3.zip "touch-fish")
+[点击下载](https://github.com/41369ly/touch-fish/releases/download/V2.4/touch-fish-2.4.zip "touch-fish")
 
 ## 使用教程
 1).到release中下载压缩包;
@@ -91,4 +91,9 @@
    1. 兼容MacOS
    2. 支持自定义导入章节匹配正则表达式 （感谢群友“云青青兮欲雨”的代码贡献）
    3. 合并idea webstorm, 此版本通用
+
+2022-03-03 V2.4
+
+   1. 添加自定义书籍章节搜索
+
  ---------

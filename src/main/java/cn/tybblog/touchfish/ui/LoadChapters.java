@@ -1,6 +1,7 @@
 package cn.tybblog.touchfish.ui;
 
 import cn.tybblog.touchfish.PersistentState;
+import cn.tybblog.touchfish.entity.Chapter;
 import cn.tybblog.touchfish.ui.dialog.FishDialog;
 import com.intellij.openapi.ui.MessageDialogBuilder;
 import com.intellij.ui.components.JBList;
@@ -9,6 +10,8 @@ import com.intellij.ui.components.JBScrollPane;
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Administrator
@@ -32,7 +35,10 @@ public class LoadChapters extends FishDialog {
             MessageDialogBuilder.yesNo("提示", "请先阅读获取章节后再选择章节").show();
             onCancel();
         }
-        searchName.setText("暂未开发搜索功能，敬请期待");
+        searchName.setText("");
+        searchBtn.addActionListener(e -> {
+            new Thread(() -> searchTitle(bookIndex)).start();
+        });
         chaptersJList.setListData(persistentState.getBook().get(bookIndex).getChapters().toArray());
         chaptersJList.addMouseListener(new MouseAdapter() {
             @Override
@@ -48,9 +54,28 @@ public class LoadChapters extends FishDialog {
             }
         });
     }
+
     private void createUIComponents() {
         // TODO: place custom component creation code here
         chaptersJList=new JBList();
         JBScrollPane1=new JBScrollPane();
+    }
+
+    private void searchTitle(int bookIndex) {
+        String titleTxt = searchName.getText();
+
+        // 匹配章节名称
+        List<Chapter> list = persistentState.getBook().get(bookIndex).getChapters();
+        if (titleTxt == null || "".equals(titleTxt)) {
+            chaptersJList.setListData(list.toArray());
+            return;
+        }
+        List<Chapter> titleList = new ArrayList<>();
+        for (Chapter cp : list) {
+            if (cp.getTitle().contains(titleTxt)) {
+                titleList.add(cp);
+            }
+        }
+        chaptersJList.setListData(titleList.toArray());
     }
 }

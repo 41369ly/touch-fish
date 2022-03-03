@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'cn.tybblog'
-version '2.3-idea'
+version '2.4'
 
 repositories {
     mavenCentral()
@@ -27,7 +27,7 @@ patchPluginXml {
       
     """
     sinceBuild '173.*'
-    untilBuild '221.*'
+    untilBuild '222.*'
 }
 
 tasks.withType(JavaCompile) {
