@@ -8,6 +8,7 @@
 
         设置界面在 File | Settings | Other Settings | Fish Config
     </description>
+    <idea-version since-build="173.*"/>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
