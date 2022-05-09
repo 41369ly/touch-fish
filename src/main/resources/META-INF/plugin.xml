@@ -7,6 +7,21 @@
         上班摸鱼看书神器
 
         设置界面在 File | Settings | Other Settings | Fish Config
+
+        github链接：https://github.com/41369ly/touch-fish
+
+        觉得好用的可以帮忙点点star
+
+        内置老板键一键隐藏
+        自定义热键
+        自动切换章节
+        自动记录上次阅读位置
+        搜索关键词提示
+        书架功能
+        txt导入
+        切换章节
+        智能识别本地文件章节
+        自定义字体、字体大小
     </description>
     <idea-version since-build="173.*"/>
 
