@@ -27,7 +27,6 @@ patchPluginXml {
       
     """
     sinceBuild '173.*'
-    untilBuild '222.*'
 }
 
 tasks.withType(JavaCompile) {

@@ -38,10 +38,12 @@ public class FileSplitUtils {
     public static Book split(Book book) {
         File srcFile = new File(book.getUrl());
         int indexOf = srcFile.getPath().lastIndexOf('\\');
+        String temp = "\\temp\\";
         if(indexOf == -1){
             indexOf = srcFile.getPath().lastIndexOf('/');
+            temp = "/temp/";
         }
-        String outputDir = srcFile.getPath().substring(0, indexOf)+"\\temp\\";
+        String outputDir = srcFile.getPath().substring(0, indexOf)+temp;
         File outputFile = new File(outputDir);
         if (!outputFile.exists()) {
             if (!outputFile.mkdirs()) {
