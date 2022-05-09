@@ -32,7 +32,7 @@
 ------------
 
 ## 下载地址
-[点击下载](https://github.com/41369ly/touch-fish/releases/download/V2.4/touch-fish-2.4.zip "touch-fish")
+[点击下载](https://github.com/41369ly/touch-fish/releases/download/V2.5/touch-fish-2.5.zip "touch-fish")
 
 ## 使用教程
 1).到release中下载压缩包;
