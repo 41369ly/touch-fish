@@ -1,6 +1,6 @@
 ## 视频教程
 语速较慢推荐二倍速食用
-https://www.douyin.com/video/7163667376364342558
+https://v.douyin.com/rRykL2q/
 
 -----------
 
