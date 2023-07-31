@@ -1,8 +1,3 @@
-## 视频教程
-https://v.douyin.com/rRykL2q/
-
------------
-
 创意源自VS Code插件版的小说阅读器（摸鱼神器Thief-Book），[链接地址](https://github.com/cteamx/Thief "链接地址")
 
 之后在github中看到https://github.com/yisier 小哥的版本
